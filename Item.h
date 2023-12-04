@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
+#include "Personnage.h"
 
 using namespace std;
 
@@ -14,36 +15,23 @@ private:
 	//Attribute (variables)
 	string name;
 	int damage;
-	int ca;
+	int armor;
 
 public:
 
 	//Actions (functions)
 
 
-	//Getter
-	string GetName() {
-		return name;
-	}
-	int GetDamage() {
-		return damage;
-	}
-	int GetCA() {
-		return ca;
-	}
 
-	//Setter
-	void SetName(string n) {
-		name = n;
-	}
+	string getName();
+	void setName(string n);
 
-	void SetDamage(int d) {
-		damage = d;
-	}
-	
-	void SetCA(int a) {
-		ca = a;
-	}
+	int getDamage();
+	void setDamage(int d);
+
+	int getArmor();
+	void setArmor(int a);
+
 
 };
 
