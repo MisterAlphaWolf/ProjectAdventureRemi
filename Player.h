@@ -14,18 +14,38 @@ class Player : public Personnage
 {
 	std::vector<Item> Inventory;
 
-	public :
+		private:
 
-		Player(); 
-		Player(const Player&) = delete;
-		Player& operator =(const Player&) = delete;
-		~Player();
+			int XP;
+			int Level;
+
+		public:
+
+			//Constructeur
+
+			Player();
+			/*Constructeur Player avec définition de l'xp de départ et du niveau de départ*/
+			Player(int x, int l);
+			/*Constructeur player avec définition du nom, health, attack, defence, armure, xp et level*/
+			Player(string n, int h, int d, int a, int x, int l);
+
+			int getXp();
+			void setXp(int x);
+
+			int getLevel();
+			void setLevel(int l);
+
+			//Fenetre destructeur
+
+			Player(const Player&) = delete;
+			Player& operator =(const Player&) = delete;
+			~Player();
 
 
-		HINSTANCE m_hInstance;
-		HWND m_hWnd;
+			HINSTANCE m_hInstance;
+			HWND m_hWnd;
 
-		//Actions
-		bool OpenInventory();
+			//Actions
+			bool OpenInventory();
 };
 

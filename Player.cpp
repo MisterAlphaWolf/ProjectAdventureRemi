@@ -1,14 +1,57 @@
 #include "Player.h"
 
+Player::Player()
+{
+	setXp(0);
+	setLevel(0);
+}
+
+Player::Player(int x, int l)
+{
+	setXp(x);
+	setLevel(l);
+}
+
+Player::Player(string n, int h, int d, int a, int x, int l)
+{
+	setName(n);
+	setHealth(h);
+	setDamage(d);
+	setArmor(a);
+	setXp(x);
+	setLevel(l);
+}
+
+int Player::getXp()
+{
+	return XP;
+}
+
+void Player::setXp(int x)
+{
+	if (x < 0) XP = 0;
+	else XP = XP + x;
+}
+
+int Player::getLevel()
+{
+	return Level;
+}
+
+void Player::setLevel(int l)
+{
+	if (l < 0) Level = 0;
+	else Level = Level + l;
+}
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {
-	case WM_CLOSE :
+	case WM_CLOSE:
 		DestroyWindow(hWnd);
 		break;
 
-	case WM_DESTROY :
+	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
 	}
@@ -46,7 +89,7 @@ Player::Player()
 
 	m_hWnd = CreateWindowEx(0, CLASS_NAME, L"Inventory", style, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, NULL, NULL, m_hInstance, NULL);
 
-	
+
 
 }
 
@@ -61,7 +104,7 @@ Player::~Player()
 
 bool Player::OpenInventory()
 {
-	
+
 	MSG msg = {};
 
 	while (PeekMessage(&msg, nullptr, 0u, 0u, PM_REMOVE)) {
@@ -77,3 +120,4 @@ bool Player::OpenInventory()
 	return true;
 
 }
+

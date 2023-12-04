@@ -3,9 +3,20 @@
 std::random_device r;
 std::uniform_int_distribution<int> dist(1, 20);
 
-Personnage::Personnage(std::string n, int hp, int damage, int ca)
+Personnage::Personnage()
+{
+    setName("Default");
+    setHealth(10);
+    setDamage(5);
+    setArmor(5);
+}
+
+Personnage::Personnage(std::string n, int hp, int d, int a)
 {
     setName(n);
+    setHealth(hp);
+    setDamage(damage);
+    setArmor(a);
 }
 
 void Personnage::RollInt(Personnage& perso)
@@ -114,13 +125,13 @@ void Personnage::setDamage(int d)
 
 int Personnage::getArmor()
 {
-    return ca;
+    return armor;
 }
 
 void Personnage::setArmor(int a)
 {
-    if (a < 0) ca = 0;
-    else ca = a;
+    if (a < 0) armor = 0;
+    else armor = a;
 }
 
 int Personnage::getinitiativeValue()
