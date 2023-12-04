@@ -5,33 +5,24 @@
 #include <time.h>
 #include "Personnage.h"
 
-using namespace std;
+//using namespace std;
 
-class Item
+class Item // Classe mère
 {
 
-private:
+private: // Attributs
 
-	//Attribute (variables)
-	string name;
-	int damage;
-	int armor;
+	std::string name; // Nom de l'item
 
-public:
-
-	//Actions (functions)
+	
+	
+public: // Méthodes
 
 
+	std::string getName(); // Getter
+	void setName(std::string n); // Setter
 
-	string getName();
-	void setName(string n);
-
-	int getDamage();
-	void setDamage(int d);
-
-	int getArmor();
-	void setArmor(int a);
-
+	Item(); // Constructeur par défaut
 
 };
 
