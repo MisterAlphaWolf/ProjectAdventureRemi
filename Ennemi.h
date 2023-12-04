@@ -16,6 +16,7 @@ private:
 	int hp;
 	int damage;
 	int ca;
+	int initiative;
 	int XPGive;
 	int ZombieLevel;
 
@@ -23,7 +24,7 @@ public:
 
 	//Constructeur
 
-	Ennemi(std::string n, int hp, int damage, int ca);
+	Ennemi();
 
 	//Getter Setter
 
@@ -38,6 +39,9 @@ public:
 
 	int getArmor();
 	void setArmor(int a);
+
+	int getInitiativeValue();
+	void setInitiativeValue(int i);
 
 	int getXPGive();
 	void setXPGive(int xp);

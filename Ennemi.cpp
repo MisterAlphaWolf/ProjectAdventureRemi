@@ -1,7 +1,7 @@
 #include "Ennemi.h"
 
 
-Ennemi::Ennemi(std::string n, int hp, int damage, int ca)
+Ennemi::Ennemi()
 {
     string n;
     setHealth(hp);
@@ -26,8 +26,7 @@ int Ennemi::getHealth()
 
 void Ennemi::setHealth(int h)
 {
-    std::random_device h;
-    std::uniform_int_distribution<int> dist(1, 20);
+    h = 10;
 
 }
 
@@ -38,8 +37,7 @@ int Ennemi::getDamage()
 
 void Ennemi::setDamage(int d)
 {
-    std::random_device d;
-    std::uniform_int_distribution<int> dist(1, 10);
+    d = 10;
 }
 
 int Ennemi::getArmor()
@@ -49,8 +47,17 @@ int Ennemi::getArmor()
 
 void Ennemi::setArmor(int a)
 {
-    std::random_device a;
-    std::uniform_int_distribution<int> dist(1, 10);
+    a = 10;
+}
+
+int Ennemi::getInitiativeValue()
+{
+    return 0;
+}
+
+void Ennemi::setInitiativeValue(int i)
+{
+    i = 10;
 }
 
 int Ennemi::getXPGive()
@@ -60,8 +67,7 @@ int Ennemi::getXPGive()
 
 void Ennemi::setXPGive(int xp)
 {
-    std::random_device xp;
-    std::uniform_int_distribution<int> dist(1, 15);
+    xp = 10;
 }
 
 int Ennemi::getZombieLevel()
@@ -71,7 +77,6 @@ int Ennemi::getZombieLevel()
 
 void Ennemi::setZombieLevel(int l)
 {
-    std::random_device l;
-    std::uniform_int_distribution<int> dist(1, 5);
+    l = 5;
 }
 

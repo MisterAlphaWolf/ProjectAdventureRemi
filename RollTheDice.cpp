@@ -61,34 +61,32 @@ int main()
     //CConsoleLogger another_console;
 
     //Set Mob
-    mob.SetName("Zombie");
-    mob.SetCA(10);
-    mob.SetHP(20);
-    mob.SetInitiative(dist(r));
+    mob.setName("Zombie");
+    mob.setInitiativeValue(dist(r));
     
-    order.emplace(mob.GetInitiative(), mob);
+    order.emplace(mob.getInitiativeValue(), mob);
     
     for (auto it = order.begin(); it != order.end(); it++) {
 
         std::cout << it->first << std::endl;
-        std::cout << it->second.GetName() << std::endl;
+        std::cout << it->second.getName() << std::endl;
 
     }
 
     //Boucle de jeu
 
-    while (p1.GetHP() > 0 && mob.GetHP() > 0) {
+    while (p1.getHealth() > 0 && mob.getHealth() > 0) {
 
         std::cout << "tour : " << turn << std::endl << std::endl;
-        if (p1.GetInitiative() > mob.GetInitiative()) {
+        if (p1.getinitiativeValue() > mob.getInitiativeValue()) {
 
-            p1.SetDamage(dist(r));
+            p1.setDamage(dist(r));
             p1.Attack(mob);
         }
 
         else {
 
-            mob.SetDamage(dist(r));
+            mob.setDamage(dist(r));
             mob.Attack(p1);
         }
 
