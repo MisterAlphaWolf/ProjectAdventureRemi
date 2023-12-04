@@ -28,63 +28,80 @@ private:
 
 public:
 
+	//Constructeur
+
+	Personnage(std::string n, int hp, int damage, int ca);
+
 	//Actions (Functions)
 	void RollInt(Personnage& perso);
 
 	void Attack(Personnage& perso);
 
-	//Getter
+	std::string getName();
+	void setName(std::string n);
 
-	int GetCA() {
-		return ca;
-	}
+	int getHealth();
+	void setHealth(int h);
 
-	int GetHP() {
-		return hp;
-	}
+	int getDamage();
+	void setDamage(int d);
 
-	int GetDamage() {
-		return damage;
-	}
+	int getArmor();
+	void setArmor(int a);
 
-	int GetInitiative() {
-		return initiative;
-	}
+	int getinitiativeValue();
+	void setInitiativeValue(int i);
 
-	bool GetAlly() {
-		return ally;
-	}
+	bool allyValue();
+	void setAllyValue(bool al);
 
-	std::string GetName()const {
-		return name;
-	}
+	//int GetCA() {
+	//	return ca;
+	//}
 
+	//int GetHP() {
+	//	return hp;
+	//}
 
-	//Setter
+	//int GetDamage() {
+	//	return damage;
+	//}
 
-	void SetCA(int a) {
-		ca = a;
-	}
+	//int GetInitiative() {
+	//	return initiative;
+	//}
 
-	void SetHP(int h) {
-		hp = h;
-	}
+	//bool GetAlly() {
+	//	return ally;
+	//}
 
-	void SetDamage(int d) {
-		damage = d;
-	}
+	//std::string GetName()const {
+	//	return name;
+	//}
 
-	void SetInitiative(int i) {
-		initiative = i;
-	}
+	//void SetCA(int a) {
+	//	ca = a;
+	//}
 
-	void SetAlly(bool al) {
-		ally = al;
-	}
+	//void SetHP(int h) {
+	//	hp = h;
+	//}
 
-	void SetName(std::string n) {
-		name = n;
-	}
+	//void SetDamage(int d) {
+	//	damage = d;
+	//}
+
+	//void SetInitiative(int i) {
+	//	initiative = i;
+	//}
+
+	//void SetAlly(bool al) {
+	//	ally = al;
+	//}
+
+	//void SetName(std::string n) {
+	//	name = n;
+	//}
 
 
 };

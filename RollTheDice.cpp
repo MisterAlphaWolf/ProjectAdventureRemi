@@ -9,6 +9,27 @@
 
 //using namespace std;
 
+Personnage starting() {
+    std::string tempname;
+    int tempca;
+    int temphealth;
+    int tempdamage;
+
+    std::cout << "--- Creation personnage ---" << std::endl << std::endl;
+    std::cout << "Entrez le nom : ";
+    std::cin >> tempname;
+    std::cout << std::endl;
+    std::cout << "Entrez les HP ( Entre 1 et 100 ) : ";
+    std::cin >> temphealth;
+    std::cout << std::endl;
+    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
+    std::cin >> tempdamage;
+    std::cout << std::endl;
+    std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
+    std::cin >> tempca;
+    return Personnage()
+}
+
 int main()
 {
 
@@ -25,14 +46,16 @@ int main()
 
     //Set Player
 
-    std::cout << "Enter the name of your player : ";
+    starting();
+
+   /* std::cout << "Enter the name of your player : ";
     std::cin >> name;
     p1.SetName(name);
     p1.SetCA(13);
     p1.SetHP(25);
     p1.SetInitiative(dist(r));
 
-    order.emplace(p1.GetInitiative(), p1);
+    order.emplace(p1.GetInitiative(), p1);*/
     
     //CConsoleLogger another_console;
 
@@ -50,6 +73,8 @@ int main()
         std::cout << it->second.GetName() << std::endl;
 
     }
+
+    //Boucle de jeu
 
     while (p1.GetHP() > 0 && mob.GetHP() > 0) {
 
