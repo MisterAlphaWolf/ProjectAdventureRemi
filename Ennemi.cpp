@@ -1,5 +1,7 @@
 #include "Ennemi.h"
 
+std::random_device r;
+std::uniform_int_distribution<int> dist(1, 20);
 
 Ennemi::Ennemi()
 {
@@ -26,8 +28,8 @@ int Ennemi::getHealth()
 
 void Ennemi::setHealth(int h)
 {
-    h = 10;
-
+    int dicehit = dist(r);
+    dicehit = h;
 }
 
 int Ennemi::getDamage()
