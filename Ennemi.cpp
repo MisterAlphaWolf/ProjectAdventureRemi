@@ -1,6 +1,24 @@
 #include "Ennemi.h"
 
 
+Ennemi::Ennemi(std::string n, int hp, int damage, int ca)
+{
+    string n;
+    setHealth(hp);
+    setDamage(damage);
+    setArmor(ca);
+}
+
+std::string Ennemi::getName()
+{
+    return std::string();
+}
+
+void Ennemi::setName(std::string n)
+{
+    name = "Zombie";
+}
+
 int Ennemi::getHealth()
 {
     return hp;

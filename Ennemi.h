@@ -12,6 +12,7 @@ class Ennemi : public Personnage
 private:
 
 	//Attribute (variables)
+	std::string name;
 	int hp;
 	int damage;
 	int ca;
@@ -22,9 +23,12 @@ public:
 
 	//Constructeur
 
-
+	Ennemi(std::string n, int hp, int damage, int ca);
 
 	//Getter Setter
+
+	std::string getName();
+	void setName(std::string n);
 
 	int getHealth();
 	void setHealth(int h);

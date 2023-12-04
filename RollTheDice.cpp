@@ -6,6 +6,7 @@
 #include <random>
 #include <map>
 #include "Personnage.h"
+#include "Ennemi.h"
 
 //using namespace std;
 
@@ -27,7 +28,7 @@ Personnage starting() {
     std::cout << std::endl;
     std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
     std::cin >> tempca;
-    return Personnage()
+    return Personnage();
 }
 
 int main()
@@ -38,7 +39,7 @@ int main()
     
     
     Personnage p1;
-    Personnage mob;
+    Ennemi mob;
 
     std::string name = "";
     int turn = 1;
