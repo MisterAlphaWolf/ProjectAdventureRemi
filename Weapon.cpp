@@ -1,4 +1,4 @@
-#include "Weapon.h"
+#include "Weapon.h" // Include Weapon header file
 
 Weapon::Weapon() // Constructeur par défaut
 {
@@ -15,13 +15,13 @@ Weapon::Weapon(WeaponType wt, int da, int du) // Constructeur Sword avec paramèt
     damage = da; // Dégâts
     durability = du; // Durabilité
 
-    switch (wt)
+    switch (wt) // Switch pour le type d'arme
     {
-        case Sword:
+        case Sword: // Si c'est une épée
 			setName("Sword"); // Définit le nom
             setIsOneHanded(true); // Définit si l'arme est à une main
 			break;
-        case Longsword:
+        case Longsword: // Si c'est une épée longue
             setName("Longsword"); // Définit le nom
             setIsOneHanded(false); // Définit si l'arme est à une main
             break;
@@ -52,14 +52,14 @@ void Weapon::setDurability(int du) // Setter
     durability = du; // Définit la durabilité
 }
 
-int Weapon::getIsOneHanded()
+int Weapon::getIsOneHanded() // Getter
 {
-    return isOneHanded;
+    return isOneHanded; // Retourne si l'arme est à une main
 }
 
-void Weapon::setIsOneHanded(bool isOneHanded)
+void Weapon::setIsOneHanded(bool isOneHanded) // Setter
 {
-    	isOneHanded = isOneHanded;
+    	isOneHanded = isOneHanded; // Définit si l'arme est à une main
 }
 
 

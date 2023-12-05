@@ -1,19 +1,30 @@
-#pragma once
-#include "Item.h"
-class Armor :
-    public Item
+#pragma once // Include guard
+#include "Item.h" // Include Item header file
+class Armor : // Armor class
+    public Item // Inherits from Item
 {
-private:
 
-    int defense;
-    int durability;
+    enum class ArmorType // ArmorType enum
+    {
+        Helmet, 
+        Chestplate,
+        Leggings,
+        Boots,
+    };
+private: // Private variables
 
-public:
+    int defense; // Defense variable
+    int durability; // Durability variable
 
-    int getDefense();
-    void setDefense(int d);
+public: // Public functions
 
-    int getDurability();
-    void setDurability(int du);
+    int getDefense(); // Getter for defense
+    void setDefense(int d); // Setter for defense
+
+    int getDurability(); // Getter for durability
+    void setDurability(int du); // Setter for durability
+
+    Armor(); // Default constructor for Armor
+    Armor(ArmorType at,int d, int du); // Constructor for Armor
 };
 

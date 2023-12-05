@@ -1,64 +1,64 @@
-#include "Potion.h"
+#include "Potion.h" // Include Potion header file
 
-int Potion::getHP()
+int Potion::getHP() // Getter for HP
 {
-    return HP;
+    return HP; // sets HP
 }
-void Potion::setHP(int hp)
+void Potion::setHP(int hp) // Setter for HP
 {
-    HP = hp;
-}
-
-int Potion::getDamage()
-{
-    return damage;
-}
-void Potion::setDamage(int d)
-{
-    damage = d;
+    HP = hp; // sets HP
 }
 
-int Potion::getArmor()
+int Potion::getDamage() // Getter for damage
 {
-    return armor;
+    return damage; // sets damage
 }
-void Potion::setArmor(int a)
+void Potion::setDamage(int d) // Setter for damage
 {
-	armor = a;
-}
-
-Potion::Potion()
-{
-    setName("Potion");
-	HP = 0;
-	damage = 0;
+    damage = d;	// sets damage
 }
 
-Potion::Potion(PotionType pt, int value)
+int Potion::getArmor() // Getter for armor
 {
-    switch (pt)
+    return armor; // sets armor
+}
+void Potion::setArmor(int a) // Setter for armor
+{
+	armor = a; // sets armor
+}
+
+Potion::Potion() // Default constructor for Potion
+{
+    setName("Potion"); // sets name
+	HP = 0; // sets HP
+	damage = 0; // sets damage
+}	
+
+Potion::Potion(PotionType pt, int value) // Constructor for Potion
+{
+    switch (pt) // Switch statement for PotionType
 	{
-	case PotionType::Health:
-		setName("HP Potion");
-		HP = value;
-		damage = 0;
+	case PotionType::Health: // If Health
+		setName("HP Potion"); // sets name
+		HP = value; // sets HP
+		damage = 0; // sets damage
 		break;
-case PotionType::Strength:
-setName("Damage Potion");
-		HP = 0;
-		damage = value;
+case PotionType::Strength: // If Strength
+setName("Damage Potion"); // sets name
+		HP = 0; // sets HP
+		damage = value; // sets damage
 		break;
-case PotionType::Defense:
-setName("Armor Potion");
-		HP = 0;
-		damage = 0;
-		armor = value;
+case PotionType::Defense: // If Defense
+setName("Armor Potion"); // sets name
+		HP = 0; // sets HP
+		damage = 0; // sets damage
+		armor = value; // sets armor
 		break;
 	
-	default:
-		setName("Potion");
-		HP = 0;
-		damage = 0;
+	default: // If none of the above
+		setName("Potion"); // sets name
+		HP = 0; // sets HP
+		damage = 0; // sets damage
 		break;
 	}
 

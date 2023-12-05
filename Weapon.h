@@ -1,33 +1,33 @@
-#pragma once
-#include "Item.h"
-class Weapon :
-    public Item
+#pragma once // Include guard
+#include "Item.h" // Include Item header file
+class Weapon : // Weapon class
+    public Item // Inherits from Item
 {
 
-    enum WeaponType
+    enum WeaponType // WeaponType enum
     {
 		Sword,
 		Longsword
 	};
 
-private:
+private: // Private variables
 
-    int damage;
-    int durability;
-    bool isOneHanded;
+    int damage; // Damage variable
+    int durability; // Durability variable
+    bool isOneHanded; // IsOneHanded variable
 
-public:
+public: // Public functions
 
-    int getDamage();
-    void setDamage(int da);
+    int getDamage();// Getter for damage
+    void setDamage(int da); // Setter for damage
 
-    int getDurability();
-    void setDurability(int du);
+    int getDurability(); // Getter for durability
+    void setDurability(int du); // Setter for durability
 
-    int getIsOneHanded();
-    void setIsOneHanded(bool isOneHanded);
+    int getIsOneHanded(); // Getter for isOneHanded
+    void setIsOneHanded(bool isOneHanded); // Setter for isOneHanded
 
-    Weapon();
-    Weapon(WeaponType wt, int da, int du);
+    Weapon(); // Default constructor for Weapon
+    Weapon(WeaponType wt, int da, int du); // Constructor for Weapon
 };
 

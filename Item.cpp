@@ -1,4 +1,4 @@
-#include "Item.h"
+#include "Item.h" // Include Item header file
 
 std::string Item::getName() // Getter
 {

@@ -1,9 +1,9 @@
-#pragma once
+#pragma once // Include guard
 
-#include <iostream>
-#include <cstdlib>
-#include <time.h>
-#include "Personnage.h"
+#include <iostream> // Include iostream
+#include <cstdlib> // Include cstdlib
+#include <time.h> // Include time.h
+#include "Personnage.h" // Include Personnage header file
 
 //using namespace std;
 
