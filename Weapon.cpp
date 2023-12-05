@@ -6,6 +6,7 @@ Weapon::Weapon() // Constructeur par défaut
     durability = (rand() % 10) + 1; // Durabilité entre 1 et 10
     setName("Default"); // Nom par défaut
     damage = 3; // Dégâts par défaut
+    setIsOneHanded(true); // Arme à une main par défaut
     
 }
 
