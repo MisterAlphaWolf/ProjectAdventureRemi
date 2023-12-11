@@ -12,22 +12,31 @@
 
 Personnage starting() {
     std::string tempname;
-    int tempca;
-    int temphealth;
-    int tempdamage;
+    int tempca = 0;
+    int temphealth = 0;
+    int tempdamage = 0;
+    int pointcreation = 10;
 
     std::cout << "--- Creation personnage ---" << std::endl << std::endl;
     std::cout << "Entrez le nom : ";
     std::cin >> tempname;
     std::cout << std::endl;
+    std::cout << "Vous avez " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
     std::cout << "Entrez les HP ( Entre 1 et 10 ) : ";
     std::cin >> temphealth;
+    pointcreation = pointcreation - temphealth;
     std::cout << std::endl;
+    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
     std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
-    std::cin >> tempdamage;
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
+    else std::cin >> tempdamage;
+    pointcreation = pointcreation - tempdamage;
     std::cout << std::endl;
+    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
     std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
-    std::cin >> tempca;
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
+    else std::cin >> tempca;
+    pointcreation = pointcreation - tempca;
     return Personnage(tempname, temphealth, tempdamage, tempca);
 }
 
