@@ -57,6 +57,7 @@ void Personnage::UseItem(string name)
 
         }
     }
+}
 
 void Personnage::Attack(Personnage& perso)
 {
