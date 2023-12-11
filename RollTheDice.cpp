@@ -154,8 +154,8 @@ int main() // Fonction principale
     }
     std::cout << "Game Over" << endl; // Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
-    pl1.setXp(mob.getXPGive()); // XP du joueur = XP du joueur + XP donne par le mob
-    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl; // Affiche l'XP gagne et le nombre de kill
+    std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
+    //std::cout << "XP gain : " << pl1.getXp() << std::endl
     return 0; // Fin du programme
 }
 
