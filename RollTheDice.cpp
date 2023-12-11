@@ -150,7 +150,7 @@ int main()
     std::cout << "Game Over" << endl;
     pl1.setNumberOfKill(1); 
     pl1.setXp(mob.getXPGive());
-    std::cout << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
+    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
     return 0;
 }
 

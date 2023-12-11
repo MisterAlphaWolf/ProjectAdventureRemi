@@ -37,25 +37,26 @@ void Personnage::AddInventory(Item I)
 void Personnage::ShowInventory()
 {
 
-    for (int i = 0; i < Inventory.max_size(); i++) {
+    for (int i = 0; i < Inventory.size(); i++) {
         cout << Inventory[i].getName() << " ";
     }
-
+    cout << endl;
 }
 
-void Personnage::UseItem(string name)
+void Personnage::UseItem()
 {
 
-    for (int i = 0; i < Inventory.max_size(); i++) {
+    for (int i = 0; i < Inventory.size(); i++) {
 
-        if (Inventory[i].getName() == "Potion") count++;
-
-        if (count == 1) {
+        if (Inventory[i].getName() == "Potion") {
 
             getHealth() + 10;
+            cout << "Player heal 10HP";
             Inventory.erase(Inventory.begin() + i);
+            break;
 
         }
+        
     }
 }
 
