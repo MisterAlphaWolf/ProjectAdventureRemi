@@ -40,15 +40,15 @@ class Player : public Personnage
 			//Fenetre destructeur
 
 
-			Player(const Player&) = delete;
-			Player& operator =(const Player&) = delete;
-			~Player();
+			//Player(const Player&) = delete;
+			//Player& operator =(const Player&) = delete;
+			//~Player();
 
 
-			HINSTANCE m_hInstance;
-			HWND m_hWnd;
+			//HINSTANCE m_hInstance;
+			//HWND m_hWnd;
 
-			//Actions
-			bool OpenInventory();
+			////Actions
+			//bool OpenInventory();
 };
 

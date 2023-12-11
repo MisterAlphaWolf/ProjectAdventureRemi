@@ -7,6 +7,7 @@
 #include <map>
 #include "Personnage.h"
 #include "Ennemi.h"
+#include "Player.h"
 
 //using namespace std;
 
@@ -40,6 +41,36 @@ Personnage starting() {
     return Personnage(tempname, temphealth, tempdamage, tempca);
 }
 
+Player startingPlayer() {
+    std::string tempname;
+    int tempca = 0;
+    int temphealth = 0;
+    int tempdamage = 0;
+    int pointcreation = 10;
+
+    std::cout << "--- Creation Player ---" << std::endl << std::endl;
+    std::cout << "Entrez le nom de votre personnage : ";
+    std::cin >> tempname;
+    std::cout << std::endl;
+    std::cout << "Vous avez " << pointcreation << " point disponible pour choisir vos statistique." << std::endl << std::endl;
+    std::cout << "Entrez les points de vie ( Entre 1 et 10 ) : ";
+    std::cin >> temphealth;
+    pointcreation = pointcreation - temphealth;
+    std::cout << std::endl;
+    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl;
+    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
+    else std::cin >> tempdamage;
+    pointcreation = pointcreation - tempdamage;
+    std::cout << std::endl;
+    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl;
+    std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
+    else std::cin >> tempca;
+    pointcreation = pointcreation - tempca;
+    return Player(tempname, temphealth, tempdamage, tempca, 0, 1);
+}
+
 int main()
 {
 
@@ -47,6 +78,7 @@ int main()
     std::uniform_int_distribution<int> dist(1, 20);
     
     Personnage p1;
+    Player pl1;
     Ennemi mob;
 
     std::string name = "";
@@ -56,9 +88,7 @@ int main()
     //Set Player
 
     p1 = starting();
-
-    std::cout << "Player health = " << p1.getHealth() << std::endl << std::endl;
-    
+    pl1 = startingPlayer();
     
    /* std::cout << "Enter the name of your player : ";
     std::cin >> name;

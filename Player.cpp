@@ -40,7 +40,7 @@ int Player::getLevel()
 
 void Player::setLevel(int l)
 {
-	if (l < 0) Level = 0;
+	if (l < 0) Level = 1;
 	else Level = Level + l;
 }
 
