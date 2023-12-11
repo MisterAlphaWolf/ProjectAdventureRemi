@@ -46,7 +46,6 @@ int main()
     std::random_device r;
     std::uniform_int_distribution<int> dist(1, 20);
     
-    
     Personnage p1;
     Ennemi mob;
 
@@ -56,8 +55,11 @@ int main()
 
     //Set Player
 
-    starting();
+    p1 = starting();
 
+    std::cout << "Player health = " << p1.getHealth() << std::endl << std::endl;
+    
+    
    /* std::cout << "Enter the name of your player : ";
     std::cin >> name;
     p1.SetName(name);
@@ -75,25 +77,22 @@ int main()
     
     order.emplace(mob.getInitiativeValue(), mob);
     
-    for (auto it = order.begin(); it != order.end(); it++) {
+    //for (auto it = order.begin(); it != order.end(); it++) {
 
-        std::cout << it->first << std::endl;
-        std::cout << it->second.getName() << std::endl;
+    //    std::cout << it->first << std::endl;
+    //    std::cout << it->second.getName() << std::endl;
 
-    }
+    //}
 
     //Boucle de jeu
 
     while (p1.getHealth() > 0 && mob.getHealth() > 0) {
 
-        std::cout << "tour : " << turn << std::endl << std::endl;
+        std::cout << p1.getName() << " tour : " << turn << std::endl << std::endl;
         if (p1.getinitiativeValue() > mob.getInitiativeValue()) {
 
-           /* p1.setDamage(dist(r));
-            p1.Attack(mob);*/
-
-
-
+           p1.setDamage(dist(r));
+            p1.Attack(mob);
 
         }
 
