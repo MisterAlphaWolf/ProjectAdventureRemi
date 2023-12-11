@@ -11,8 +11,9 @@ void Item::setName(std::string n) // Setter
 
 Item::Item() // Constructeur par défaut
 {
-	srand(time(0)); // Génère un nombre aléatoire
-	int random = (rand() % 3) + 1; // Entre 1 et 3
+	std::random_device r;
+	std::uniform_int_distribution<int> dist(1, 3);
+	int random = (dist(r));
 	
 	switch (random) // Switch pour définir le nom de l'item
 	{

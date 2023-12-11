@@ -3,6 +3,7 @@
 #include <iostream> // Include iostream
 #include <cstdlib> // Include cstdlib
 #include <time.h> // Include time.h
+#include <random>
 //#include "Personnage.h" // Include Personnage header file
 
 //using namespace std;

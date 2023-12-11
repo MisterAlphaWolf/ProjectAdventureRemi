@@ -23,7 +23,6 @@ private:
 	int armor;
 	int initiative;
 	int delay = 2000;
-	int count;
 	bool ally;
 	vector<Item> Inventory;
 
@@ -43,7 +42,7 @@ public:
 
 	void ShowInventory();
 
-	void UseItem(string name);
+	void UseItem();
 
 	std::string getName();
 	void setName(std::string n);
