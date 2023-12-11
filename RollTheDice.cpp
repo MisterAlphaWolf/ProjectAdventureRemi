@@ -68,15 +68,13 @@ Player startingPlayer() {
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
     else std::cin >> tempca;
     pointcreation = pointcreation - tempca;
+    system("cls");
     return Player(tempname, temphealth, tempdamage, tempca, 0, 1);
+
 }
 
 int main()
-{
-
-    //std::random_device r;
-    //std::uniform_int_distribution<int> dist(1, 20);
-    
+{ 
     //Personnage p1;
     Player pl1;
     Ennemi mob;
@@ -90,80 +88,70 @@ int main()
     //p1 = starting();
     pl1 = startingPlayer();
     pl1.setInitiativeValue(20);
-   /* std::cout << "Enter the name of your player : ";
-    std::cin >> name;
-    p1.SetName(name);
-    p1.SetCA(13);
-    p1.SetHP(25);
-    p1.SetInitiative(dist(r));
-
-    order.emplace(p1.GetInitiative(), p1);*/
-    
-    //CConsoleLogger another_console;
 
     //Set Mob
     mob.setName("Zombie");
     mob.setInitiativeValue(1);
     mob.setHealth(10);
+    mob.setDamage(4);
     
-    //order.emplace(mob.getInitiativeValue(), mob);
-    
-    //for (auto it = order.begin(); it != order.end(); it++) {
-
-    //    std::cout << it->first << std::endl;
-    //    std::cout << it->second.getName() << std::endl;
-
-    //}
-
     //Boucle de jeu
 
-    while (pl1.getHealth() > 0 && mob.getHealth() > 0) {
+    while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
+    {
 
-        bool playerattack = false;
-        bool playerdefend = false;
+        bool playerattack = false; // Le joueur n'attaque pas
+        bool playerdefend = false; // Le joueur ne defend pas
 
-        std::cout << "tour : " << turn << std::endl;
-        if (pl1.getinitiativeValue() > mob.getInitiativeValue()) 
+        std::cout << "tour : " << turn << std::endl; // Affiche le tour
+        if (pl1.getinitiativeValue() > mob.getInitiativeValue()) // Si le joueur a plus d'initiative que le mob
         {
-            cout << "Player turn" << endl;  
-            cout << "player attack or defend ?" << endl;
-            string playerchoice;
-            cin >> playerchoice;
-            if (playerchoice == "attack")
+            std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
+            std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
+            std::cout <<"  " << endl;
+            std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
+            std::cout << "Attack or Defend ?" << endl; // Demande au joueur d'attaquer ou de defendre
+
+            string playerchoice; // Choix du joueur
+            cin >> playerchoice; // Le joueur entre son choix
+            if (playerchoice == "attack")  // Si le joueur attaque
             {
-				playerattack = true;
+				playerattack = true; // Le joueur attaque
 			}
-            else if (playerchoice == "defend")
+            else if (playerchoice == "defend") // Si le joueur defend
             {
-				playerdefend = true;
+				playerdefend = true; // Le joueur defend
 			}
-            else
+            else // Si le joueur entre autre chose
             {
-				cout << "invalid choice" << endl;
+                std::cout << "invalid choice" << endl; // Affiche "invalid choice"
 			}
-            if (playerattack == true) 
+
+            if (playerattack == true) // Si le joueur attaque
             {
-                mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor()));
-				cout << "Mob HP : " << mob.getHealth() << endl;
+                mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
 			}
-			else if (playerdefend == true) 
+			else if (playerdefend == true) // Si le joueur defend
 			{
-				pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage()));
-				cout << "Player HP : " << pl1.getHealth() << endl;
+				pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
             }            
         }
-        else {
-            cout << "Mob turn" << endl;
-            mob.setDamage(4);
-            mob.Attack(pl1);
-        }
-           
-        turn++;
+            std::cout << "Mob turn" << endl; // Si le mob attaque
+            if (turn % 2 == 0) // Si le tour est pair
+            {
+                pl1.setHealth(pl1.getHealth() - (mob.getDamage() - pl1.getArmor())); // Player HP = Player HP - (Mob Damage - Player Armor)
+			}
+            else // Si le tour est impair
+            {
+				pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
+            }
+        turn++; // Tour suivant
+        system("cls"); // Efface la console
     }
-    cout << "Game Over" << endl;
+    std::cout << "Game Over" << endl;
     pl1.setNumberOfKill(1);
     pl1.setXp(mob.getXPGive());
-    cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
+    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
     return 0;
 }
 
