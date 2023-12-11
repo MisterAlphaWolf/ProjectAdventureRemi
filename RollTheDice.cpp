@@ -80,8 +80,12 @@ int main()
         std::cout << "tour : " << turn << std::endl << std::endl;
         if (p1.getinitiativeValue() > mob.getInitiativeValue()) {
 
-            p1.setDamage(dist(r));
-            p1.Attack(mob);
+           /* p1.setDamage(dist(r));
+            p1.Attack(mob);*/
+
+
+
+
         }
 
         else {

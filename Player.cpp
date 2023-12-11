@@ -12,7 +12,7 @@ Player::Player(int x, int l)
 	setLevel(l);
 }
 
-Player::Player(string n, int h, int d, int a, int x, int l)
+Player::Player(std::string n, int h, int d, int a, int x, int l)
 {
 	setName(n);
 	setHealth(h);

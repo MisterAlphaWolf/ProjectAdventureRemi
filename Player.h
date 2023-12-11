@@ -6,6 +6,7 @@
 #include <vector>
 #include "Personnage.h"
 #include "Item.h"
+#include <string>
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 //using namespace std;
@@ -18,6 +19,7 @@ class Player : public Personnage
 
 			int XP;
 			int Level;
+			
 
 		public:
 
@@ -27,7 +29,7 @@ class Player : public Personnage
 			/*Constructeur Player avec définition de l'xp de départ et du niveau de départ*/
 			Player(int x, int l);
 			/*Constructeur player avec définition du nom, health, attack, defence, armure, xp et level*/
-			Player(string n, int h, int d, int a, int x, int l);
+			Player(std::string n, int h, int d, int a, int x, int l);
 
 			int getXp();
 			void setXp(int x);
