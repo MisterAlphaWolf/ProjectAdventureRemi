@@ -1,8 +1,8 @@
 // RollTheDice.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 
 
-#include <iostream>
-#include <cstdlib>
+#include <iostream> 
+#include <cstdlib> 
 #include <random>
 #include <map>
 #include "Personnage.h"
@@ -11,69 +11,71 @@
 
 //using namespace std;
 
-Personnage starting() {
-    std::string tempname;
-    int tempca = 0;
-    int temphealth = 0;
-    int tempdamage = 0;
-    int pointcreation = 10;
+Personnage starting() // Creation du personnage
+{
+    std::string tempname; // Nom temporaire
+    int tempca = 0; // Valeur de defense temporaire
+    int temphealth = 0; // Valeur de vie temporaire
+    int tempdamage = 0; // Valeur d'attaque temporaire
+    int pointcreation = 10; // Point de creation
 
-    std::cout << "--- Creation personnage ---" << std::endl << std::endl;
-    std::cout << "Entrez le nom : ";
-    std::cin >> tempname;
-    std::cout << std::endl;
-    std::cout << "Vous avez " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
-    std::cout << "Entrez les HP ( Entre 1 et 10 ) : ";
-    std::cin >> temphealth;
-    pointcreation = pointcreation - temphealth;
-    std::cout << std::endl;
-    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
-    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
-    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
-    else std::cin >> tempdamage;
-    pointcreation = pointcreation - tempdamage;
-    std::cout << std::endl;
-    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
-    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : ";
-    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
-    else std::cin >> tempca;
-    pointcreation = pointcreation - tempca;
-    return Personnage(tempname, temphealth, tempdamage, tempca);
+    std::cout << "--- Creation personnage ---" << std::endl << std::endl;   // Creation du personnage
+    std::cout << "Entrez le nom : "; // Demande le nom
+    std::cin >> tempname; // Le joueur entre son nom
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Vous avez " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez les HP ( Entre 1 et 10 ) : "; // Demande les points de vie
+    std::cin >> temphealth; // Le joueur entre les points de vie
+    pointcreation = pointcreation - temphealth; // Point de creation = Point de creation - Points de vie
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : "; // Demande la valeur d'attaque
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
+    else std::cin >> tempdamage; // Le joueur entre la valeur d'attaque
+    pointcreation = pointcreation - tempdamage; // Point de creation = Point de creation - Valeur d'attaque
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : "; // Demande la valeur de defense
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
+    else std::cin >> tempca; // Le joueur entre la valeur de defense
+    pointcreation = pointcreation - tempca; // Point de creation = Point de creation - Valeur de defense
+    return Personnage(tempname, temphealth, tempdamage, tempca); // Retourne le personnage
 }
 
-Player startingPlayer() {
-    std::string tempname;
-    int tempca = 0;
-    int temphealth = 0;
-    int tempdamage = 0;
-    int pointcreation = 10;
+Player startingPlayer() // Creation du joueur
+{
+    std::string tempname; // Nom temporaire
+    int tempca = 0; // Valeur de defense temporaire
+    int temphealth = 0; // Valeur de vie temporaire
+    int tempdamage = 0; // Valeur d'attaque temporaire
+    int pointcreation = 10; // Point de creation
 
-    std::cout << "--- Creation Player ---" << std::endl << std::endl;
-    std::cout << "Entrez le nom de votre personnage : ";
-    std::cin >> tempname;
-    std::cout << std::endl;
-    std::cout << "Vous avez " << pointcreation << " point disponible pour choisir vos statistique." << std::endl << std::endl;
-    std::cout << "Entrez les points de vie ( Entre 1 et 10 ) : ";
-    std::cin >> temphealth;
-    pointcreation = pointcreation - temphealth;
-    std::cout << std::endl;
-    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl;
-    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
-    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
-    else std::cin >> tempdamage;
-    pointcreation = pointcreation - tempdamage;
-    std::cout << std::endl;
-    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl;
-    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : ";
-    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
-    else std::cin >> tempca;
-    pointcreation = pointcreation - tempca;
-    system("cls");
-    return Player(tempname, temphealth, tempdamage, tempca, 0, 1);
+    std::cout << "--- Creation Player ---" << std::endl << std::endl; // Creation du joueur
+    std::cout << "Entrez le nom de votre personnage : "; // Demande le nom
+    std::cin >> tempname; // Le joueur entre son nom
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Vous avez " << pointcreation << " point disponible pour choisir vos statistique." << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez les points de vie ( Entre 1 et 10 ) : "; // Demande les points de vie
+    std::cin >> temphealth; // Le joueur entre les points de vie
+    pointcreation = pointcreation - temphealth; // Point de creation = Point de creation - Points de vie
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : "; // Demande la valeur d'attaque
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
+    else std::cin >> tempdamage; // Le joueur entre la valeur d'attaque
+    pointcreation = pointcreation - tempdamage; // Point de creation = Point de creation - Valeur d'attaque
+    std::cout << std::endl; // Saut de ligne
+    std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
+    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : "; // Demande la valeur de defense
+    if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
+    else std::cin >> tempca; // Le joueur entre la valeur de defense
+    pointcreation = pointcreation - tempca; // Point de creation = Point de creation - Valeur de defense
+    system("cls"); // Efface la console
+    return Player(tempname, temphealth, tempdamage, tempca, 0, 1); // Retourne le joueur
 
 }
 
-int main()
+int main() // Fonction principale
 { 
     //Personnage p1;
     Player pl1; // Player
@@ -147,11 +149,11 @@ int main()
         turn++; // Tour suivant
         system("cls"); // Efface la console
     }
-    std::cout << "Game Over" << endl;
-    pl1.setNumberOfKill(1); 
-    pl1.setXp(mob.getXPGive());
-    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
-    return 0;
+    std::cout << "Game Over" << endl; // Affiche "Game Over"
+    pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
+    pl1.setXp(mob.getXPGive()); // XP du joueur = XP du joueur + XP donne par le mob
+    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl; // Affiche l'XP gagne et le nombre de kill
+    return 0; // Fin du programme
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

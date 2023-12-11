@@ -1,84 +1,84 @@
 #include "Ennemi.h"
 
-Ennemi::Ennemi()
+Ennemi::Ennemi() //Ennemi Constructor
 {
-    string n;
-    setHealth(hp);
-    setDamage(damage);
-    setArmor(ca);
+    string n; //Name
+    setHealth(hp); //Set Health to hp
+    setDamage(damage); //Set Damage to damage
+    setArmor(ca); //Set Armor to ca
 }
 
-std::string Ennemi::getName()
+std::string Ennemi::getName() //Name Getter
 {
-    return std::string();
+    return std::string(); //Return Name
 }
 
-void Ennemi::setName(std::string n)
+void Ennemi::setName(std::string n) //Name Setter
 {
-    name = "Zombie";
+    name = "Zombie"; //Name is Zombie
 }
 
-int Ennemi::getHealth()
+int Ennemi::getHealth() //Health Getter
 {
-    return hp;
+    return hp; //Return Health
 }
 
-void Ennemi::setHealth(int h)
+void Ennemi::setHealth(int h) //Health Setter
 {
-    if (h <  0) hp = 0;
-    else hp = h;
+    if (h <  0) hp = 0; //If Health is less than 0, Health is 0
+    else hp = h; //Else Health is Health
 }
 
-int Ennemi::getDamage()
+int Ennemi::getDamage() //Damage Getter
 {
-    return damage;
+    return damage; //Return Damage
 }
 
-void Ennemi::setDamage(int d)
+void Ennemi::setDamage(int d) //Damage Setter
 {
-    if(d < 0) damage = 1;
-	else damage = d;
+    if(d < 0) damage = 1; //If Damage is less than 0, Damage is 1
+	else damage = d; //Else Damage is Damage
 }
 
-int Ennemi::getArmor()
+int Ennemi::getArmor() //Armor Getter
 {
-    return ca;
+    return ca; //Return Armor
 }
 
-void Ennemi::setArmor(int a)
+void Ennemi::setArmor(int a) //Armor Setter
 {
-    if (a < 0) ca = 1;
-    else ca = a;
+    if (a < 0) ca = 1; //If Armor is less than 0, Armor is 1
+    else ca = a; //Else Armor is Armor
 }
 
-int Ennemi::getInitiativeValue()
+int Ennemi::getInitiativeValue() //Initiative Getter
 {
-    return initiative;
+    return initiative; //Return Initiative
 }
 
-void Ennemi::setInitiativeValue(int i)
+void Ennemi::setInitiativeValue(int i) //Initiative Setter
 {
-    initiative = i;
+    initiative = i; //Initiative is i
 }
 
-int Ennemi::getXPGive()
+int Ennemi::getXPGive() //XP Getter
 {
-    return XPGive;
+    return XPGive; //Return XP
 }
 
-void Ennemi::setXPGive(int xp)
+void Ennemi::setXPGive(int xp) //XP Setter
 {
-    if ( xp < 1 ) XPGive = 1;
-	else XPGive = xp;
+    if ( xp < 1 ) XPGive = 1; //If XP is less than 1, XP is 1
+	else XPGive = xp; //Else XP is XP
 }
 
-int Ennemi::getZombieLevel()
+int Ennemi::getZombieLevel() //Zombie Level Getter
 {
-    return 0;
+    return 0; //Return Zombie Level
 }
 
-void Ennemi::setZombieLevel(int l)
+void Ennemi::setZombieLevel(int l) //Zombie Level Setter
 {
-    l = 5;
+    l = 5; //Zombie Level is 5
 }
 

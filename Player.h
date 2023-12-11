@@ -8,21 +8,21 @@
 #include "Item.h"
 #include <string>
 
-LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam); //Window Procedure
 //using namespace std;
 
-class Player : public Personnage
+class Player : public Personnage //Classe Player
 {
-	std::vector<Item> Inventory;
+	std::vector<Item> Inventory; //Inventaire
 
-		private:
+		private: //Attributs privés
 
-			int XP = 0;
-			int Level = 0;
-			int NumberOfKill = 0;
+			int XP = 0; //XP
+			int Level = 0; //Level
+			int NumberOfKill = 0; //Number of Kill
 			
 
-		public:
+		public: //Attributs publics
 
 			//Constructeur
 
@@ -32,14 +32,14 @@ class Player : public Personnage
 			/*Constructeur player avec définition du nom, health, attack, defence, armure, xp et level*/
 			Player(std::string n, int h, int d, int a, int x, int l);
 
-			int getXp();
-			void setXp(int x);
+			int getXp(); //XP Getter
+			void setXp(int x); //XP Setter
 
-			int getLevel();
-			void setLevel(int l);
+			int getLevel(); //Level Getter
+			void setLevel(int l); //Level Setter
 
-			int getNumberOfKill();
-			void setNumberOfKill(int Nok);
+			int getNumberOfKill(); //Number of Kill Getter
+			void setNumberOfKill(int Nok); //Number of Kill Setter
 
 			//Fenetre destructeur
 
