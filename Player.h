@@ -39,6 +39,7 @@ class Player : public Personnage
 
 			//Fenetre destructeur
 
+
 			Player(const Player&) = delete;
 			Player& operator =(const Player&) = delete;
 			~Player();

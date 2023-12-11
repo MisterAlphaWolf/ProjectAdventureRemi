@@ -20,7 +20,7 @@ Personnage starting() {
     std::cout << "Entrez le nom : ";
     std::cin >> tempname;
     std::cout << std::endl;
-    std::cout << "Entrez les HP ( Entre 1 et 100 ) : ";
+    std::cout << "Entrez les HP ( Entre 1 et 10 ) : ";
     std::cin >> temphealth;
     std::cout << std::endl;
     std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : ";
@@ -28,7 +28,7 @@ Personnage starting() {
     std::cout << std::endl;
     std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
     std::cin >> tempca;
-    return Personnage();
+    return Personnage(tempname, temphealth, tempdamage, tempca);
 }
 
 int main()
