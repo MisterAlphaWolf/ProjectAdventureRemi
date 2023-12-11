@@ -26,6 +26,38 @@ void Personnage::RollInt(Personnage& perso)
 
 }
 
+
+void Personnage::AddInventory(Item I)
+{
+
+    Inventory.push_back(I);
+
+}
+
+void Personnage::ShowInventory()
+{
+
+    for (int i = 0; i < Inventory.max_size(); i++) {
+        cout << Inventory[i].getName() << " ";
+    }
+
+}
+
+void Personnage::UseItem(string name)
+{
+
+    for (int i = 0; i < Inventory.max_size(); i++) {
+
+        if (Inventory[i].getName() == "Potion") count++;
+
+        if (count == 1) {
+
+            getHealth() + 10;
+            Inventory.erase(Inventory.begin() + i);
+
+        }
+    }
+
 void Personnage::Attack(Personnage& perso)
 {
 

@@ -3,9 +3,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <random>
+#include <vector>
 #include <windows.h>
+#include "Item.h"
 
-//using namespace std;
+using namespace std;
 
 class Personnage
 {
@@ -21,7 +23,9 @@ private:
 	int armor;
 	int initiative;
 	int delay = 2000;
+	int count;
 	bool ally;
+	vector<Item> Inventory;
 
 public:
 
@@ -34,6 +38,12 @@ public:
 	void RollInt(Personnage& perso);
 
 	void Attack(Personnage& perso);
+
+	void AddInventory(Item I);
+
+	void ShowInventory();
+
+	void UseItem(string name);
 
 	std::string getName();
 	void setName(std::string n);
