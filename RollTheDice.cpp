@@ -12,6 +12,8 @@
 
 //using namespace std;
 
+
+// Fonction de création dynamique par le joueur de son personnage
 Personnage starting() // Creation du personnage
 {
     std::string tempname; // Nom temporaire
@@ -43,6 +45,7 @@ Personnage starting() // Creation du personnage
     return Personnage(tempname, temphealth, tempdamage, tempca); // Retourne le personnage
 }
 
+// Fonction de création dynamique par le joueur de son personnage jouable
 Player startingPlayer() // Creation du joueur
 {
     std::string tempname; // Nom temporaire
@@ -96,8 +99,8 @@ int main() // Fonction principale
     int turn = 1; // Tour de jeu
 
     //Set Player
-    //p1 = starting();
-    pl1 = startingPlayer(); // Creation du joueur
+    //p1 = starting(); // Creation de la classe personnage ( classe parent )
+    pl1 = startingPlayer(); // Creation du joueur ( classe enfant )
     pl1.setInitiativeValue(20); // Initiative du joueur
 
     //Set Mob
@@ -195,8 +198,8 @@ int main() // Fonction principale
     }
     std::cout << "Game Over" << endl; // Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
-    pl1.setXp(mob.getXPGive()); // XP du joueur = XP du joueur + XP donne par le mob
-    std::cout << "XP gain : " << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl; // Affiche l'XP gagne et le nombre de kill
+    std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
+    //std::cout << "XP gain : " << pl1.getXp() << std::endl
     return 0; // Fin du programme
 }
 

@@ -22,7 +22,7 @@ Player::Player(std::string n, int h, int d, int a, int x, int l) //Player Constr
 	setLevel(l); //Set Level to l
 }
 
-int Player::getXp() //XP Getter
+/*int Player::getXp() //XP Getter
 {
 	return XP; //Return XP
 }
@@ -42,7 +42,7 @@ void Player::setLevel(int l) //Level Setter
 {
 	if (l < 0) Level = 1; //If Level is less than 0, Level is 1
 	else Level = Level + l; //Else Level is Level + l
-}
+}*/
 
 int Player::getNumberOfKill() //Number of Kill Getter
 {
