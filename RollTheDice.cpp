@@ -77,45 +77,48 @@ int main()
 
     while (p1.getHealth() > 0 && mob.getHealth() > 0) {
 
-        std::cout << "tour : " << turn << std::endl << std::endl;
-        if (p1.getinitiativeValue() > mob.getInitiativeValue()) {
+        bool playerattack = false;
+        bool playerdefend = false;
 
-           /* p1.setDamage(dist(r));
-            p1.Attack(mob);*/
-
-
-
-
+        std::cout << "tour : " << turn << std::endl;
+        if (p1.getinitiativeValue() > mob.getInitiativeValue()) 
+        {
+            cout << "Player turn" << endl;  
+            cout << "player attack or defend ?" << endl;
+            string playerchoice;
+            cin >> playerchoice;
+            if (playerchoice == "attack")
+            {
+				playerattack = true;
+			}
+            else if (playerchoice == "defend")
+            {
+				playerdefend = true;
+			}
+            else
+            {
+				cout << "invalid choice" << endl;
+			}
+            if (playerattack == true) 
+            {
+                mob.setHealth(mob.getHealth() - (p1.getDamage() - mob.getArmor()));
+				cout << "Mob HP : " << mob.getHealth() << endl;
+			}
+			else if (playerdefend == true) 
+			{
+				p1.setHealth(p1.getHealth() - ((p1.getArmor() + 2) - mob.getDamage()));
+				cout << "Player HP : " << p1.getHealth() << endl;
+            }            
         }
-
         else {
-
-            mob.setDamage(dist(r));
-            mob.Attack(p1);
+            cout << "Mob turn" << endl;
+            //mob.setDamage(dist(r));
+            //mob.Attack(p1);
         }
+           
 
-        turn++;
     }
-    //cout << "Hello" << endl;  //dedug
-   /* int dice;
-    srand(time(NULL));
-
-
-    dice = rand() % 100;
-
-    if (dice <= 5) {
-        cout << dice << " : " << "Réussite critique !";
-    }
-
-
-    if (dice >= 95) {
-        cout << dice << " : " << "Échec critique !";
-    }
-
-    else {
-        cout << dice;
-    }*/
-
+    turn++;
     return 0;
 }
 

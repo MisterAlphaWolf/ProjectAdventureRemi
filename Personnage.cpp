@@ -31,7 +31,7 @@ void Personnage::Attack(Personnage& perso)
 
     int dicehit = dist(r);
 
-    switch (dicehit) {
+   /* switch (dicehit) {
     case 1:
 
         //Affichage resultats
@@ -87,7 +87,7 @@ void Personnage::Attack(Personnage& perso)
         std::cout << getName() << " gagne !";
 
     }
-    
+    */
 }
 
 std::string Personnage::getName()
