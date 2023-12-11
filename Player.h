@@ -19,6 +19,7 @@ class Player : public Personnage
 
 			int XP;
 			int Level;
+			int NumberOfKill;
 			
 
 		public:
@@ -36,6 +37,9 @@ class Player : public Personnage
 
 			int getLevel();
 			void setLevel(int l);
+
+			int getNumberOfKill();
+			void setNumberOfKill(int Nok);
 
 			//Fenetre destructeur
 

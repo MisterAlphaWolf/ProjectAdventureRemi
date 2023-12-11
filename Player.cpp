@@ -44,6 +44,17 @@ void Player::setLevel(int l)
 	else Level = Level + l;
 }
 
+int Player::getNumberOfKill()
+{
+	return NumberOfKill;
+}
+
+void Player::setNumberOfKill(int Nok)
+{
+	if (Nok < 0) NumberOfKill = 0;
+	else NumberOfKill = NumberOfKill + Nok;
+}
+
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg) {

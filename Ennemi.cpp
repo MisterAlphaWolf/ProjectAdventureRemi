@@ -66,7 +66,7 @@ int Ennemi::getXPGive()
 
 void Ennemi::setXPGive(int xp)
 {
-    xp = 10;
+    xp = 5;
 }
 
 int Ennemi::getZombieLevel()

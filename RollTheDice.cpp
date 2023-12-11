@@ -160,6 +160,10 @@ int main()
 
     }
     turn++;
+    pl1.setNumberOfKill(1);
+    pl1.setXp(mob.getXPGive());
+    cout << pl1.getXp << std::endl << "Number of kill : " << pl1.getNumberOfKill << std::endl;
+
     return 0;
 }
 
