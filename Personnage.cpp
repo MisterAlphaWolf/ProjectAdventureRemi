@@ -141,7 +141,7 @@ int Personnage::getinitiativeValue()
 
 void Personnage::setInitiativeValue(int i)
 {
-    initiative = i;
+    initiative = dist(r);
 }
 
 bool Personnage::allyValue()
