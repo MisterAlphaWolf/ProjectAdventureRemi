@@ -76,27 +76,26 @@ Player startingPlayer() {
 int main()
 { 
     //Personnage p1;
-    Player pl1;
-    Ennemi mob;
+    Player pl1; // Player
+    Ennemi mob; // Mob
 
-    std::string name = "";
-    int turn = 1;
-    std::map<int, Personnage, std::greater<int>> order;
+    std::string name = ""; // Nom du joueur
+    int turn = 1; // Tour de jeu
 
     //Set Player
-
     //p1 = starting();
-    pl1 = startingPlayer();
-    pl1.setInitiativeValue(20);
+    pl1 = startingPlayer(); // Creation du joueur
+    pl1.setInitiativeValue(20); // Initiative du joueur
 
     //Set Mob
-    mob.setName("Zombie");
-    mob.setInitiativeValue(1);
-    mob.setHealth(10);
-    mob.setDamage(4);
+    mob.setName("Zombie"); // Nom du mob
+    mob.setInitiativeValue(1); // Initiative du mob
+    mob.setHealth(10); // Vie du mob
+    mob.setDamage(4); // Dommage du mob
+    mob.setXPGive(25); // XP donne par le mob
     
-    //Boucle de jeu
 
+    //Boucle de jeu
     while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
     {
 
@@ -149,7 +148,7 @@ int main()
         system("cls"); // Efface la console
     }
     std::cout << "Game Over" << endl;
-    pl1.setNumberOfKill(1);
+    pl1.setNumberOfKill(1); 
     pl1.setXp(mob.getXPGive());
     std::cout << pl1.getXp() << std::endl << "Number of kill : " << pl1.getNumberOfKill() << std::endl;
     return 0;

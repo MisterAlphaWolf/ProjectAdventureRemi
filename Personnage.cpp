@@ -141,7 +141,7 @@ int Personnage::getHealth()
 
 void Personnage::setHealth(int h)
 {
-    if (h < 0) hp = 1;
+    if (h < 1) hp = 1;
     else hp = h;
 }
 
@@ -152,7 +152,7 @@ int Personnage::getDamage()
 
 void Personnage::setDamage(int d)
 {
-    if (d < 0) damage = 1;
+    if (d < 1) damage = 1;
     else damage = d;
 }
 
@@ -163,7 +163,7 @@ int Personnage::getArmor()
 
 void Personnage::setArmor(int a)
 {
-    if (a < 0) armor = 1;
+    if (a < 1) armor = 1;
     else armor = a;
 }
 

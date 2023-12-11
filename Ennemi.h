@@ -17,7 +17,7 @@ private:
 	int damage;
 	int ca;
 	int initiative;
-	int XPGive;
+	int XPGive = 1;
 	int ZombieLevel;
 
 public:
