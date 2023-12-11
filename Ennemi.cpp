@@ -25,8 +25,8 @@ int Ennemi::getHealth()
 
 void Ennemi::setHealth(int h)
 {
-    if (h > 0) hp = h;
-    else hp = 2;
+    if (h <  0) hp = 0;
+    else hp = h;
 }
 
 int Ennemi::getDamage()
@@ -36,7 +36,8 @@ int Ennemi::getDamage()
 
 void Ennemi::setDamage(int d)
 {
-    d = 1;
+    if(d < 0) damage = 1;
+	else damage = d;
 }
 
 int Ennemi::getArmor()
@@ -46,7 +47,8 @@ int Ennemi::getArmor()
 
 void Ennemi::setArmor(int a)
 {
-    a = 0;
+    if (a < 0) ca = 1;
+    else ca = a;
 }
 
 int Ennemi::getInitiativeValue()

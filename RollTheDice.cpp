@@ -34,7 +34,7 @@ Personnage starting() {
     pointcreation = pointcreation - tempdamage;
     std::cout << std::endl;
     std::cout << "Il vous reste " << pointcreation << " point pour creer votre personnage" << std::endl << std::endl;
-    std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
+    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : ";
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
     else std::cin >> tempca;
     pointcreation = pointcreation - tempca;
@@ -64,7 +64,7 @@ Player startingPlayer() {
     pointcreation = pointcreation - tempdamage;
     std::cout << std::endl;
     std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl;
-    std::cout << "Entrez la valeur de defence ( entre 1 et 10 ) : ";
+    std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : ";
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl;
     else std::cin >> tempca;
     pointcreation = pointcreation - tempca;
@@ -74,10 +74,10 @@ Player startingPlayer() {
 int main()
 {
 
-    std::random_device r;
-    std::uniform_int_distribution<int> dist(1, 20);
+    //std::random_device r;
+    //std::uniform_int_distribution<int> dist(1, 20);
     
-    Personnage p1;
+    //Personnage p1;
     Player pl1;
     Ennemi mob;
 
@@ -87,9 +87,9 @@ int main()
 
     //Set Player
 
-    p1 = starting();
+    //p1 = starting();
     pl1 = startingPlayer();
-    
+    pl1.setInitiativeValue(20);
    /* std::cout << "Enter the name of your player : ";
     std::cin >> name;
     p1.SetName(name);
@@ -103,9 +103,10 @@ int main()
 
     //Set Mob
     mob.setName("Zombie");
-    mob.setInitiativeValue(dist(r));
+    mob.setInitiativeValue(1);
+    mob.setHealth(10);
     
-    order.emplace(mob.getInitiativeValue(), mob);
+    //order.emplace(mob.getInitiativeValue(), mob);
     
     //for (auto it = order.begin(); it != order.end(); it++) {
 
@@ -116,13 +117,13 @@ int main()
 
     //Boucle de jeu
 
-    while (p1.getHealth() > 0 && mob.getHealth() > 0) {
+    while (pl1.getHealth() > 0 && mob.getHealth() > 0) {
 
         bool playerattack = false;
         bool playerdefend = false;
 
         std::cout << "tour : " << turn << std::endl;
-        if (p1.getinitiativeValue() > mob.getInitiativeValue()) 
+        if (pl1.getinitiativeValue() > mob.getInitiativeValue()) 
         {
             cout << "Player turn" << endl;  
             cout << "player attack or defend ?" << endl;
@@ -142,28 +143,27 @@ int main()
 			}
             if (playerattack == true) 
             {
-                mob.setHealth(mob.getHealth() - (p1.getDamage() - mob.getArmor()));
+                mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor()));
 				cout << "Mob HP : " << mob.getHealth() << endl;
 			}
 			else if (playerdefend == true) 
 			{
-				p1.setHealth(p1.getHealth() - ((p1.getArmor() + 2) - mob.getDamage()));
-				cout << "Player HP : " << p1.getHealth() << endl;
+				pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage()));
+				cout << "Player HP : " << pl1.getHealth() << endl;
             }            
         }
         else {
             cout << "Mob turn" << endl;
-            //mob.setDamage(dist(r));
-            //mob.Attack(p1);
+            mob.setDamage(4);
+            mob.Attack(pl1);
         }
            
-
+        turn++;
     }
-    turn++;
+    cout << "Game Over" << endl;
     pl1.setNumberOfKill(1);
     pl1.setXp(mob.getXPGive());
     cout << pl1.getXp << std::endl << "Number of kill : " << pl1.getNumberOfKill << std::endl;
-
     return 0;
 }
 
