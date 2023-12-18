@@ -12,7 +12,6 @@
 
 Weapon::Weapon(int da) // Constructeur Sword avec paramètres
 {
-    name = n;   
     damage = da; // Dégâts
     srand(time(0)); // Génère un nombre aléatoire
     durability = (rand() % 10) + 1; // Durabilité entre 1 et 10
@@ -33,15 +32,6 @@ Weapon::Weapon(int da) // Constructeur Sword avec paramètres
 			break;
 
     }
-}
-
-std::string Weapon::getName()
-{
-    return std::string();
-}
-void Weapon::setName(std::string n)
-{
-	name = n; // Définit le nom
 }
 
 int Weapon::getDamage() // Getter

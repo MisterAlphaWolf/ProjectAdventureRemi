@@ -4,6 +4,8 @@
 #include "Potion.h" // Include Potion header file
 
 
+
+
 Item::Item() // Constructeur par défaut
 {
 	std::random_device r;
@@ -35,5 +37,12 @@ Item::Item() // Constructeur par défaut
 	}
 }
 
-
+std::string Item::getName()
+{
+	return name; // Retourne le nom
+}
+void Item::setName(std::string n)
+{
+	name = n; // Définit le nom
+}
 
