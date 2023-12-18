@@ -269,6 +269,7 @@ int main() // Fonction principale
 
         r = rand() % 3; // Random entre 0 et 2
     }
+    system("Color 04");
     SetConsoleOutputCP(65001);
     std::cout << "  _|_|_|                                            _|_|                                    " << std::endl;
     std::cout << " _|          _|_|_|  _|_|_|  _|_|      _|_|        _|    _|  _|      _|    _|_|    _|  _|_|  " << std::endl;
