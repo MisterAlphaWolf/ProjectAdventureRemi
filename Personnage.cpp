@@ -167,7 +167,7 @@ int Personnage::getHealth() //Health Getter
 
 void Personnage::setHealth(int h) //Health Setter
 {
-    if (h < 1) hp = 1; //Si la vie est inférieure à 1, la vie est 1
+    if (h < 1) hp = 0; //Si la vie est inférieure à 1, la vie est 0
     else hp = h; //Sinon la vie est la vie entrée
 }
 

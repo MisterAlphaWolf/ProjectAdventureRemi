@@ -12,11 +12,16 @@ class Weapon : // Weapon class
 
 private: // Private variables
 
+    std::string name; // Name variable
     int damage; // Damage variable
     int durability; // Durability variable
     bool isOneHanded; // IsOneHanded variable
 
+
 public: // Public functions
+
+    std::string getName(); // Getter for name
+    void setName(std::string n); // Setter for name
 
     int getDamage();// Getter for damage
     void setDamage(int da); // Setter for damage

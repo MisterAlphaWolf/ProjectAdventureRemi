@@ -203,7 +203,7 @@ int main() // Fonction principale
 					}
                     else // Si le joueur entre autre chose
                     {
-                        pl1.UseItem();
+                        std::cout << "invalid choice"<< endl; // Affiche "Choix invalide"
                     }
                 }
                     std::cout << "Mob turn" << endl; // Si le mob attaque
