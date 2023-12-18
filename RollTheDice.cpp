@@ -11,7 +11,7 @@
 #include "Item.h"
 
 //using namespace std;
-
+#pragma comment(lib, "winmm.lib")
 
 // Fonction de création dynamique par le joueur de son personnage
 Personnage starting() // Creation du personnage
@@ -54,7 +54,12 @@ Player startingPlayer() // Creation du joueur
     int tempdamage = 0; // Valeur d'attaque temporaire
     int pointcreation = 10; // Point de creation
 
-    std::cout << "--- Creation Player ---" << std::endl << std::endl; // Creation du joueur
+    std::cout << " .o88b. d8888b. d88888b  .d8b.  d888888b d888888b  .d88b.  d8b   db      d8888b. d88888b d8888b. .d8888.  .d88b.  d8b   db d8b   db  .d8b.   d888b  d88888b " << std::endl; // Creation du joueur
+    std::cout << "d8P  Y8 88  `8D 88'     d8' `8b `~~88~~'   `88'   .8P  Y8. 888o  88      88  `8D 88'     88  `8D 88'  YP .8P  Y8. 888o  88 888o  88 d8' `8b 88' Y8b 88'     " << std::endl;
+    std::cout << "8P      88oobY' 88ooooo 88ooo88    88       88    88    88 88V8o 88      88oodD' 88ooooo 88oobY' `8bo.   88    88 88V8o 88 88V8o 88 88ooo88 88      88ooooo " << std::endl;
+    std::cout << "8b      88`8b   88~~~~~ 88~~~88    88       88    88    88 88 V8o88      88~~~   88~~~~~ 88`8b     `Y8b. 88    88 88 V8o88 88 V8o88 88~~~88 88  ooo 88~~~~~ " << std::endl;
+    std::cout << "Y8b  d8 88 `88. 88.     88   88    88      .88.   `8b  d8' 88  V888      88      88.     88 `88. db   8D `8b  d8' 88  V888 88  V888 88   88 88. ~8~ 88.     " << std::endl;
+    std::cout << " `Y88P' 88   YD Y88888P YP   YP    YP    Y888888P  `Y88P'  VP   V8P      88      Y88888P 88   YD `8888Y'  `Y88P'  VP   V8P VP   V8P YP   YP  Y888P  Y88888P " << std::endl << std::endl;
     std::cout << "Entrez le nom de votre personnage : "; // Demande le nom
     std::cin >> tempname; // Le joueur entre son nom
     std::cout << std::endl; // Saut de ligne
@@ -79,6 +84,37 @@ Player startingPlayer() // Creation du joueur
 
 }
 
+void LevelUp(Player p)
+{
+    switch (p.getLevel())
+    {
+    case 1:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 2:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 3:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 4:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;
+    default:
+        &Player::getLevel;
+        break;
+    }
+}
+
 enum Room
 {
    Monster,
@@ -86,18 +122,32 @@ enum Room
    Empty
 };
 
+void MainMenu()
+{
+   std::cout << " '########:::'#######::'##:::::::'##::::::::::'########:'##::::'##:'########::::'########::'####::'######::'########: " << endl;
+   std::cout << "  ##.... ##:'##.... ##: ##::::::: ##::::::::::... ##..:: ##:::: ##: ##.....::::: ##.... ##:. ##::'##... ##: ##.....:: " << endl;
+   std::cout << "  ##:::: ##: ##:::: ##: ##::::::: ##::::::::::::: ##:::: ##:::: ##: ##:::::::::: ##:::: ##:: ##:: ##:::..:: ##::::::: " << endl;
+   std::cout << "  ########:: ##:::: ##: ##::::::: ##::::::::::::: ##:::: #########: ######:::::: ##:::: ##:: ##:: ##::::::: ######::: " << endl;
+   std::cout << "  ##.. ##::: ##:::: ##: ##::::::: ##::::::::::::: ##:::: ##.... ##: ##...::::::: ##:::: ##:: ##:: ##::::::: ##...:::: " << endl;
+   std::cout << "  ##::. ##:: ##:::: ##: ##::::::: ##::::::::::::: ##:::: ##:::: ##: ##:::::::::: ##:::: ##:: ##:: ##::: ##: ##::::::: " << endl;
+   std::cout << "  ##:::. ##:. #######:: ########: ########::::::: ##:::: ##:::: ##: ########:::: ########::'####:. ######:: ########: " << endl;
+   std::cout << " ..:::::..:::.......:::........::........::::::::..:::::..:::::..::........:::::........:::....:::......:::........:: " << endl << endl << endl;
+}
 
 int main() // Fonction principale
-{ 
+{
     int r = rand() % 3;
+    PlaySound(TEXT("GameMusic.wav"), NULL, SND_ASYNC);
 
     //Personnage p1;
     Player pl1; // Player
-    Ennemi mob; // Mob
+    Ennemi mob; //Ennemi
 
     std::string name = ""; // Nom du joueur
     int turn = 1; // Tour de jeu
 
+    //Starting
+    MainMenu();
     //Set Player
     //p1 = starting(); // Creation de la classe personnage ( classe parent )
     pl1 = startingPlayer(); // Creation du joueur ( classe enfant )
@@ -113,12 +163,11 @@ int main() // Fonction principale
     //Boucle de jeu
     while (pl1.getHealth() > 0) // Tant que le joueur est en vie
     {
-       std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
+        std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
 
         if (r == Monster) // Si la salle contient un monstre
         {
             system("cls"); // Efface la console
-            mob.setHealth(rand() % 20 + 1); // Vie du mob = random entre 1 et 10
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
 
             //Boucle de Fight
@@ -154,7 +203,7 @@ int main() // Fonction principale
 					}
                     else // Si le joueur entre autre chose
                     {
-                        std::cout << "invalid choice" << endl; // Affiche "invalid choice"
+                        pl1.UseItem();
                     }
                 }
                     std::cout << "Mob turn" << endl; // Si le mob attaque
@@ -169,11 +218,36 @@ int main() // Fonction principale
                     turn++; // Tour suivant
                     system("cls"); // Efface la console
             }
+            bool levelup2Make = FALSE;
+            bool levelup3Make = FALSE;
+            bool levelup4Make = FALSE;
+            bool levelup5Make = FALSE;
+            if (pl1.getXp() >= 35 && levelup2Make == false)
+            {
+                levelup2Make = true;
+                LevelUp(pl1);
+            }
+            else if (pl1.getXp() >= 80 && levelup2Make == false)
+            {
+                levelup3Make = true;
+                LevelUp(pl1);
+            }
+            if (pl1.getXp() >= 150 && levelup2Make == false)
+            {
+                levelup4Make = true;
+                LevelUp(pl1);
+            }
+            if (pl1.getXp() >= 300 && levelup2Make == false)
+            {
+                levelup5Make = true;
+                LevelUp(pl1);
+            }
         }
-        else if (r == RItem) // Si la salle contient un item
+
+        else if (r == RItem)
         {
             std::cout << "Vous entrez dans une salle avec un item" << std::endl; // Affiche "Vous entrez dans une salle avec un item"
-			// Créer un item
+            // Créer un item
             Item I;
             std::cout << "Vous avez trouver un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
@@ -182,21 +256,28 @@ int main() // Fonction principale
 		}
         else if (r == Empty) // Si la salle est vide
         {
-            std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
-            Sleep(800); // Attend 0.8 secondes
-            system("cls"); // Efface la console
-		}
+             std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
+             Sleep(800); // Attend 0.8 secondes
+             system("cls"); // Efface la console
+        }
         else
         {
-			std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
-		}
+            std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
+        }
 
         r = rand() % 3; // Random entre 0 et 2
     }
-    std::cout << "Game Over" << endl; // Affiche "Game Over"
+    std::cout << "  /$$$$$$                                           /$$$$$$                               " << std::endl;
+    std::cout << " /$$__  $$                                         /$$__  $$                              " << std::endl;
+    std::cout << "| $$  \__/  /$$$$$$  /$$$$$$/$$$$   /$$$$$$       | $$  \ $$ /$$    /$$ /$$$$$$   /$$$$$$ " << std::endl;
+    std::cout << "| $$ /$$$$ |____  $$| $$_  $$_  $$ /$$__  $$      | $$  | $$|  $$  /$$//$$__  $$ /$$__  $$" << std::endl;
+    std::cout << "| $$|_  $$  /$$$$$$$| $$ \ $$ \ $$| $$$$$$$$      | $$  | $$ \  $$/$$/| $$$$$$$$| $$  \__/" << std::endl;
+    std::cout << "| $$  \ $$ /$$__  $$| $$ | $$ | $$| $$_____/      | $$  | $$  \  $$$/ | $$_____/| $$      " << std::endl;
+    std::cout << "|  $$$$$$/|  $$$$$$$| $$ | $$ | $$|  $$$$$$$      |  $$$$$$/   \  $/  |  $$$$$$$| $$      " << std::endl;
+    std::cout << " \______/  \_______/|__/ |__/ |__/ \_______/       \______/     \_/    \_______/|__/      " << std::endl << std::endl;// Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
-    //std::cout << "XP gain : " << pl1.getXp() << std::endl
+    std::cout << "XP gain : " << pl1.getXp() << std::endl;
     return 0; // Fin du programme
 }
 
