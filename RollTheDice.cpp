@@ -68,18 +68,21 @@ Player startingPlayer() // Creation du joueur
     std::cout << "Vous avez " << pointcreation << " point disponible pour choisir vos statistique." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez les points de vie ( Entre 1 et 10 ) : "; // Demande les points de vie
     std::cin >> temphealth; // Le joueur entre les points de vie
+    if (temphealth > 10) temphealth = 10;
     pointcreation = pointcreation - temphealth; // Point de creation = Point de creation - Points de vie
     std::cout << std::endl; // Saut de ligne
     std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : "; // Demande la valeur d'attaque
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
     else std::cin >> tempdamage; // Le joueur entre la valeur d'attaque
+    if (tempdamage > 10) tempdamage = 10;
     pointcreation = pointcreation - tempdamage; // Point de creation = Point de creation - Valeur d'attaque
     std::cout << std::endl; // Saut de ligne
     std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : "; // Demande la valeur de defense
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
     else std::cin >> tempca; // Le joueur entre la valeur de defense
+    if (tempca > 10) tempca = 10;
     pointcreation = pointcreation - tempca; // Point de creation = Point de creation - Valeur de defense
     system("cls"); // Efface la console
     return Player(tempname, temphealth, tempdamage, tempca, 0, 1); // Retourne le joueur
