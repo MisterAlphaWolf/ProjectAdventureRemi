@@ -177,7 +177,54 @@ int main() // Fonction principale
                 turn++; // Tour suivant
                 system("cls"); // Efface la console
             }
-            
+            if (pl1.getXp() >= 35) 
+            {
+                if (pl1.getLevel() >= 2) 
+                {
+                    if (pl1.getXp()>= 80)
+                    {
+                        if (pl1.getLevel() >= 3)
+                        {
+                            if (pl1.getXp() >= 150)
+                            {
+                                if (pl1.getLevel() >= 4)
+                                {
+                                    if (pl1.getXp() >= 350)
+                                    {
+                                        if (pl1.getLevel() >= 5)
+                                        {
+                                            pl1.setLevel(1);
+                                            pl1.setArmor(5);
+                                            pl1.setDamage(5);
+                                            pl1.setHealth(5);
+                                            std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
+                                        }
+                                }
+                                else
+                                {
+                                    pl1.setLevel(1);
+                                    pl1.setArmor(5);
+                                    pl1.setDamage(5);
+                                    pl1.setHealth(5);
+                                }
+                        }
+                        else
+                        {
+                            pl1.setLevel(1);
+                            pl1.setArmor(5);
+                            pl1.setDamage(5);
+                            pl1.setHealth(5);
+                        }
+                    }
+                }
+                else
+                {
+                    pl1.setLevel(1);
+                    pl1.setArmor(5);
+                    pl1.setDamage(5);
+                    pl1.setHealth(5);
+                }
+            }
         }
         else if (r == RItem)
         {
