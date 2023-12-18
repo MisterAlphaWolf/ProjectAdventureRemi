@@ -5,6 +5,8 @@
 #include <cstdlib> 
 #include <random>
 #include <map>
+#define NOMINMAX
+#include <Windows.h>
 #include "Personnage.h"
 #include "Ennemi.h"
 #include "Player.h"
@@ -267,13 +269,12 @@ int main() // Fonction principale
 
         r = rand() % 3; // Random entre 0 et 2
     }
-    std::cout << " ▄▀▀▀▀▄    ▄▀▀█▄   ▄▀▀▄ ▄▀▄  ▄▀▀█▄▄▄▄      ▄▀▀▀▀▄   ▄▀▀▄ ▄▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ " << std::endl;
-    std::cout << "█         ▐ ▄▀ ▀▄ █  █ ▀  █ ▐  ▄▀   ▐     █      █ █   █    █ ▐  ▄▀   ▐ █   █   █ " << std::endl;
-    std::cout << "█    ▀▄▄    █▄▄▄█ ▐  █    █   █▄▄▄▄▄      █      █ ▐  █    █    █▄▄▄▄▄  ▐  █▀▀█▀  " << std::endl;
-    std::cout << "█     █ █  ▄▀   █   █    █    █    ▌      ▀▄    ▄▀    █   ▄▀    █    ▌   ▄▀    █  " << std::endl;
-    std::cout << "▐▀▄▄▄▄▀ ▐ █   ▄▀  ▄▀   ▄▀    ▄▀▄▄▄▄         ▀▀▀▀       ▀▄▀     ▄▀▄▄▄▄   █     █   " << std::endl;
-    std::cout << "▐         ▐   ▐   █    █     █    ▐                            █    ▐   ▐     ▐   " << std::endl;
-    std::cout << "                  ▐    ▐     ▐                                 ▐                  " << std::endl << std::endl;// Affiche "Game Over"
+    SetConsoleOutputCP(65001);
+    std::cout << "  _|_|_|                                            _|_|                                    " << std::endl;
+    std::cout << " _|          _|_|_|  _|_|_|  _|_|      _|_|        _|    _|  _|      _|    _|_|    _|  _|_|  " << std::endl;
+    std::cout << " _|  _|_|  _|    _|  _|    _|    _|  _|_|_|_|      _|    _|  _|      _|  _|_|_|_|  _|_|      " << std::endl;
+    std::cout << " _|    _|  _|    _|  _|    _|    _|  _|            _|    _|    _|  _|    _|        _|        " << std::endl;
+    std::cout << "   _|_|_|    _|_|_|  _|    _|    _|    _|_|_|        _|_|        _|        _|_|_|  _|        " << std::endl << std::endl;// Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
     std::cout << "XP gain : " << pl1.getXp() << std::endl;
