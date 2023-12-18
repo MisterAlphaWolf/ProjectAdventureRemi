@@ -185,6 +185,9 @@ void MainMenu()
 
 int main() // Fonction principale
 {
+    
+    ::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000); //Force la console en fullscreen;
+    
     int r = rand() % 3;
     PlaySound(TEXT("GameMusic.wav"), NULL, SND_ASYNC);
 
