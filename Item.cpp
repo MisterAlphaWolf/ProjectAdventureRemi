@@ -20,7 +20,7 @@ Item::Item() // Constructeur par défaut
 		case 1:
 			//création d'une arme
 			Weapon Weapon(int da); // Appelle le constructeur avec paramètre de Weapon
-			setName(Item::getName()); // Définit le nom
+			setName("Weapon"); // Définit le nom
 			break;
 		case 2: 
 			setName("Armor"); // Définit le nom
@@ -31,8 +31,6 @@ Item::Item() // Constructeur par défaut
 			setName("Potion");	// Définit le nom
 			//création d'une potion
 			Potion Potion(); // Appelle le constructeur par défaut de Potion
-			break;
-		default:
 			break;
 	}
 }
