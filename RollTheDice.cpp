@@ -4,6 +4,8 @@
 #include <cstdlib> 
 #include <random>
 #include <map>
+#define NOMINMAX
+#include <Windows.h>
 #include "Personnage.h"
 #include "Ennemi.h"
 #include "Player.h"
@@ -65,18 +67,21 @@ Player startingPlayer() // Creation du joueur
     std::cout << "Vous avez " << pointcreation << " point disponible pour choisir vos statistique." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez les points de vie ( Entre 1 et 10 ) : "; // Demande les points de vie
     std::cin >> temphealth; // Le joueur entre les points de vie
+    if (temphealth > 10) temphealth = 10;
     pointcreation = pointcreation - temphealth; // Point de creation = Point de creation - Points de vie
     std::cout << std::endl; // Saut de ligne
     std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez la valeur d'attaque ( entre 1 et 10 ) : "; // Demande la valeur d'attaque
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
     else std::cin >> tempdamage; // Le joueur entre la valeur d'attaque
+    if (tempdamage > 10) tempdamage = 10;
     pointcreation = pointcreation - tempdamage; // Point de creation = Point de creation - Valeur d'attaque
     std::cout << std::endl; // Saut de ligne
     std::cout << "Il vous reste " << pointcreation << " point." << std::endl << std::endl; // Affiche le nombre de point disponible
     std::cout << "Entrez la valeur de defense ( entre 1 et 10 ) : "; // Demande la valeur de defense
     if (pointcreation <= 0) std::cout << "Vous n'avez plus assez de point pour ameliorer votre personnage." << std::endl; // Si le joueur n'a plus de point
     else std::cin >> tempca; // Le joueur entre la valeur de defense
+    if (tempca > 10) tempca = 10;
     pointcreation = pointcreation - tempca; // Point de creation = Point de creation - Valeur de defense
     system("cls"); // Efface la console
     return Player(tempname, temphealth, tempdamage, tempca, 0, 1); // Retourne le joueur
@@ -197,12 +202,19 @@ int main() // Fonction principale
     pl1 = startingPlayer(); // Creation du joueur ( classe enfant )
     pl1.setInitiativeValue(20); // Initiative du joueur
 
+    //Set Mob
+    mob.setName("Zombie"); // Nom du mob
+    mob.setInitiativeValue(1); // Initiative du mob
+    mob.setHealth(10); // Vie du mob
+    mob.setDamage(4); // Dommage du mob
+    //mob.setXPGive(25); // XP donne par le mob
+    
     //Boucle de jeu
     while (pl1.getHealth() > 0) // Tant que le joueur est en vie
     {
         std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
 
-        if (r == Monster)
+        if (r == Monster) // Si la salle contient un monstre
         {
             system("cls"); // Efface la console
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
@@ -211,10 +223,6 @@ int main() // Fonction principale
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
             {
-
-                bool playerattack = false; // Le joueur n'attaque pas
-                bool playerdefend = false; // Le joueur ne defend pas
-
                 std::cout << "tour : " << turn << std::endl; // Affiche le tour
                 if (pl1.getinitiativeValue() > mob.getInitiativeValue()) // Si le joueur a plus d'initiative que le mob
                 {
@@ -222,44 +230,43 @@ int main() // Fonction principale
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
-                    std::cout << "Attack/Defend/Potion/Inventory ?" << endl; // Demande au joueur d'attaquer ou de defendre
+                    std::cout << "1: Attack  2: Defend 3: Inventory " << endl; // Demande au joueur d'attaquer ou de defendre
 
                     string playerchoice; // Choix du joueur
                     cin >> playerchoice; // Le joueur entre son choix
-                    if (playerchoice == "attack" || playerchoice == "Attack")  // Si le joueur attaque
+                    if (playerchoice == "attack" || playerchoice == "Attack" || playerchoice == "1")  // Si le joueur attaque
                     {
                         mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
                     }
-                    else if (playerchoice == "defend" || playerchoice == "Defend") // Si le joueur defend
+                    else if (playerchoice == "defend" || playerchoice == "Defend" || playerchoice == "2") // Si le joueur defend
                     {
                         pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
                     }
-                    else if (playerchoice == "potion" || playerchoice == "Potion") // Si le joueur utilise une potion
+                    else if (playerchoice == "inventory" || playerchoice == "Inventory" || playerchoice == "3") // Si le joueur ouvre son inventaire
                     {
-                        pl1.UseItem();
-                    }
-                    else if (playerchoice == "inventory" || playerchoice == "Inventory") // montre inventaire
-                    {
-                        pl1.ShowInventory();
-                    }
-
+                        string itemchoice = " "; // Choix de l'item
+						pl1.ShowInventory(); // Affiche l'inventaire du joueur
+                        std::cout << "Choisir un item" << endl; // Demande au joueur de choisir un item
+                        cin >> itemchoice; // Le joueur entre son choix
+                        pl1.UseItem(itemchoice); // Utilise l'item
+                        std::cout << "  " << endl;
+					}
                     else // Si le joueur entre autre chose
                     {
-                        std::cout << "invalid choice" << endl; // Affiche "invalid choice"
+                        std::cout << "invalid choice"<< endl; // Affiche "Choix invalide"
                     }
-
                 }
-                std::cout << "Mob turn" << endl; // Si le mob attaque
-                if (turn % 2 == 0) // Si le tour est pair
-                {
-                    pl1.setHealth(pl1.getHealth() - (mob.getDamage() - pl1.getArmor())); // Player HP = Player HP - (Mob Damage - Player Armor)
-                }
-                else // Si le tour est impair
-                {
-                    pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
-                }
-                turn++; // Tour suivant
-                system("cls"); // Efface la console
+                    std::cout << "Mob turn" << endl; // Si le mob attaque
+                    if (turn % 2 == 0) // Si le tour est pair
+                    {
+                        pl1.setHealth(pl1.getHealth() - (mob.getDamage() - pl1.getArmor())); // Player HP = Player HP - (Mob Damage - Player Armor)
+                    }
+                    else // Si le tour est impair
+                    {
+                        pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
+                    }
+                    turn++; // Tour suivant
+                    system("cls"); // Efface la console
             }
             bool levelup2Make = FALSE;
             bool levelup3Make = FALSE;
@@ -292,12 +299,12 @@ int main() // Fonction principale
             std::cout << "Vous entrez dans une salle avec un item" << std::endl; // Affiche "Vous entrez dans une salle avec un item"
             // Créer un item
             Item I;
-            std::cout << "Vous avez trouve un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
+            std::cout << "Vous avez trouver un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
-            Sleep(3000); // Attend 3 seconde
+            Sleep(1000); // Attend 1 seconde
             system("cls"); // Efface la console
-        }
-        else if (r == Empty)
+		}
+        else if (r == Empty) // Si la salle est vide
         {
              std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
              Sleep(800); // Attend 0.8 secondes
@@ -308,12 +315,24 @@ int main() // Fonction principale
             std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
         }
 
-            r = rand() % 3;
+        r = rand() % 3; // Random entre 0 et 2
     }
-    std::cout << "Game Over" << endl; // Affiche "Game Over"
+    system("Color 0F");
+    SetConsoleOutputCP(65001);
+    std::cout << "     ,o888888o.          .8.                   ,8.       ,8.          8 8888888888                 ,o888888o.  `8.`888b           ,8' 8 8888888888   8 888888888o.   " << std::endl;
+    std::cout << "    8888     `88.       .888.                 ,888.     ,888.         8 8888                    . 8888     `88. `8.`888b         ,8'  8 8888         8 8888    `88.  " << std::endl;
+    std::cout << " ,8 8888       `8.     :88888.               .`8888.   .`8888.        8 8888                   ,8 8888       `8b `8.`888b       ,8'   8 8888         8 8888     `88  " << std::endl;
+    std::cout << " 88 8888              . `88888.             ,8.`8888. ,8.`8888.       8 8888                   88 8888        `8b `8.`888b     ,8'    8 8888         8 8888     ,88  " << std::endl;
+    std::cout << " 88 8888             .8. `88888.           ,8'8.`8888,8^8.`8888.      8 888888888888           88 8888         88  `8.`888b   ,8'     8 888888888888 8 8888.   ,88'  " << std::endl;
+    std::cout << " 88 8888            .8`8. `88888.         ,8' `8.`8888' `8.`8888.     8 8888                   88 8888         88   `8.`888b ,8'      8 8888         8 888888888P'   " << std::endl;
+    std::cout << " 88 8888   8888888 .8' `8. `88888.       ,8'   `8.`88'   `8.`8888.    8 8888                   88 8888        ,8P    `8.`888b8'       8 8888         8 8888`8b       " << std::endl;
+    std::cout << " `8 8888       .8'.8'   `8. `88888.     ,8'     `8.`'     `8.`8888.   8 8888                   `8 8888       ,8P      `8.`888'        8 8888         8 8888 `8b.     " << std::endl;
+    std::cout << "    8888     ,88'.888888888. `88888.   ,8'       `8        `8.`8888.  8 8888                    ` 8888     ,88'        `8.`8'         8 8888         8 8888   `8b.   " << std::endl;
+    std::cout << "     `8888888P' .8'       `8. `88888. ,8'         `         `8.`8888. 8 888888888888               `8888888P'           `8.`          8 888888888888 8 8888     `88. " << std::endl << std::endl;// Affiche "Game Over"
+    
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
-    std::cout << "XP gain : " << pl1.getXp() << std::endl;
+    std::cout << "XP gain : " << pl1.getXp() << std::endl; // L'xp gagne
     return 0; // Fin du programme
 }
 

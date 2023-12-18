@@ -26,9 +26,9 @@ class Player : public Personnage //Classe Player
 
 			//Constructeur
 
-			Player();
+			Player(); //Player Constructor
 			/*Constructeur Player avec définition de l'xp de départ et du niveau de départ*/
-			Player(int x, int l);
+			//Player(int x, int l);
 			/*Constructeur player avec définition du nom, health, attack, defence, armure, xp et level*/
 			Player(std::string n, int h, int d, int a, int x, int l);
 

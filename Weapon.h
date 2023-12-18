@@ -16,6 +16,7 @@ private: // Private variables
     int durability; // Durability variable
     bool isOneHanded; // IsOneHanded variable
 
+
 public: // Public functions
 
     int getDamage();// Getter for damage
@@ -27,7 +28,7 @@ public: // Public functions
     int getIsOneHanded(); // Getter for isOneHanded
     void setIsOneHanded(bool isOneHanded); // Setter for isOneHanded
 
-    Weapon(); // Default constructor for Weapon
-    Weapon(WeaponType wt, int da, int du); // Constructor for Weapon
+    //Weapon(); // Default constructor for Weapon
+    Weapon(int da); // Constructor for Weapon
 };
 

@@ -36,30 +36,108 @@ void Personnage::AddInventory(Item I) //Ajout d'un item dans l'inventaire
 
 void Personnage::ShowInventory() //Affichage de l'inventaire
 {
+    //cout << Inventory.size() << endl; //Affichage de la taille de l'inventaire
 
     for (int i = 0; i < Inventory.size(); i++) //Boucle pour afficher l'inventaire
     {
-        cout << Inventory[i].getName() << " "; //Affichage de l'item
+        cout << Inventory[i].getName(); //Affichage de l'item
     }
     cout << endl; //Saut de ligne
+
 }
 
-void Personnage::UseItem() //Utilisation d'un item
+void Personnage::UseItem(string itemname) //Utilisation d'un item
 {
 
     for (int i = 0; i < Inventory.size(); i++) //Boucle pour utiliser un item
     {
+            if (Inventory[i].getName() == "Potion HP") //Si l'item est une potion de heal
+            {
 
-        if (Inventory[i].getName() == "Potion") //Si l'item est une potion
-        {
+                setHealth(getHealth() + 10); //Le joueur gagne 10HP
+                cout << "Vous gagnez +10 HP"; //Affichage du résultat
+                Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+                break; //Sortie de la boucle
 
-            getHealth() + 10; //Le joueur regagne 10HP
-            cout << "Player heal 10HP"; //Affichage du résultat
-            Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
-            break; //Sortie de la boucle
+            }
 
-        }
-        
+            else if (Inventory[i].getName() == "Potion Damage") //Si l'item est une potion de dégâts
+            {
+
+                setDamage(getDamage() + 5); //Le joueur gagne 5 dégâts
+                cout << "Player gain 5 damage"; //Affichage du résultat
+                Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+                break; //Sortie de la boucle
+
+            }
+
+            else if (Inventory[i].getName() == "Potion Armor") //Si l'item est une potion d'armure
+            {
+
+                setArmor(getArmor() + 5); //Le joueur gagne 5 armure
+                cout << "Player gain 5 armor"; //Affichage du résultat
+                Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+                break; //Sortie de la boucle
+
+            }
+
+            else //Si l'item n'est pas une potion
+            {
+                cout << "Vous n'avez pas de potion"; //Affichage du résultat
+            }
+
+            if (Inventory[i].getName() == "Sword") //Si l'item est une épée
+            {
+				setDamage(getDamage() + 2); //Le joueur gagne 2 dégâts
+				cout << "Player gain 2 damage"; //Affichage du résultat
+				Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+				break; //Sortie de la boucle
+			}
+
+            else if (Inventory[i].getName() == "Longsword") //Si l'item est une épée longue
+            {
+				setDamage(getDamage() + 4); //Le joueur gagne 4 dégâts
+				cout << "Player gain 4 damage"; //Affichage du résultat
+				Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+				break; //Sortie de la boucle
+			}
+            else //Si l'item n'est pas une arme
+            {
+				cout << "Vous n'avez pas d'arme"; //Affichage du résultat
+			}
+
+            if (Inventory[i].getName() == "Helmet") //Si l'item est un casque
+            {
+                setArmor(getArmor() + 2); //Le joueur gagne 2 armure
+                cout << "Player gain 2 armor"; //Affichage du résultat
+                Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+            }
+
+            else if (Inventory[i].getName() == "Chestplate") //Si l'item est un chestplate
+            {
+				setArmor(getArmor() + 4); //Le joueur gagne 4 armure
+				cout << "Player gain 4 armor"; //Affichage du résultat
+				Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+			}
+
+            else if (Inventory[i].getName() == "Leggings") //Si l'item est un leggings
+            {
+				setArmor(getArmor() + 3); //Le joueur gagne 3 armure
+				cout << "Player gain 3 armor"; //Affichage du résultat
+				Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+			}
+
+            else if (Inventory[i].getName() == "Boots") //Si l'item est une paire de boots
+            {
+				setArmor(getArmor() + 1); //Le joueur gagne 1 armure
+				cout << "Player gain 1 armor"; //Affichage du résultat
+				Inventory.erase(Inventory.begin() + i); //Suppression de l'item de l'inventaire
+			}
+
+            else //Si l'item n'est pas une armure
+            {
+				cout << "Vous n'avez pas d'armure"; //Affichage du résultat
+			}     
     }
 }
 
@@ -89,7 +167,7 @@ int Personnage::getHealth() //Health Getter
 
 void Personnage::setHealth(int h) //Health Setter
 {
-    if (h < 1) hp = 1; //Si la vie est inférieure à 1, la vie est 1
+    if (h < 1) hp = 0; //Si la vie est inférieure à 1, la vie est 0
     else hp = h; //Sinon la vie est la vie entrée
 }
 
