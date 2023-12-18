@@ -18,6 +18,17 @@ void Ennemi::setName(std::string n) //Name Setter
     name = "Zombie"; //Name is Zombie
 }
 
+int Ennemi::getZombieLevel() //Zombie Level Getter
+{
+    return 0; //Return Zombie Level
+}
+
+void Ennemi::setZombieLevel(int l) //Zombie Level Setter
+{
+    if (l <= 0) ZombieLevel = 1; //If Level is less or equal than 0, Level is 1
+    else ZombieLevel = ZombieLevel + l; //Else Level is Level + l
+}
+
 int Ennemi::getHealth() //Health Getter
 {
     return hp; //Return Health
@@ -25,8 +36,8 @@ int Ennemi::getHealth() //Health Getter
 
 void Ennemi::setHealth(int h) //Health Setter
 {
-    if (h <  0) hp = 0; //If Health is less than 0, Health is 0
-    else hp = h; //Else Health is Health
+        if (h < 0) hp = 0; //If Health is less than 0, Health is 0
+        else hp = h; //Else Health is Health   
 }
 
 int Ennemi::getDamage() //Damage Getter
@@ -47,7 +58,7 @@ int Ennemi::getArmor() //Armor Getter
 
 void Ennemi::setArmor(int a) //Armor Setter
 {
-    if (a < 0) ca = 1; //If Armor is less than 0, Armor is 1
+    if (a <= 0) ca = 1; //If Armor is less than 0, Armor is 1
     else ca = a; //Else Armor is Armor
 }
 
@@ -72,12 +83,3 @@ void Ennemi::setXPGive(int xp) //XP Setter
 	else XPGive = xp; //Else XP is XP
 }
 
-int Ennemi::getZombieLevel() //Zombie Level Getter
-{
-    return 0; //Return Zombie Level
-}
-
-void Ennemi::setZombieLevel(int l) //Zombie Level Setter
-{
-    l = 5; //Zombie Level is 5
-}

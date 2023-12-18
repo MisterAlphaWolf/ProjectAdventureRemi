@@ -84,6 +84,37 @@ Player startingPlayer() // Creation du joueur
 
 }
 
+void LevelUp(Player p)
+{
+    switch (p.getLevel())
+    {
+    case 1:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 2:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 3:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 4:
+        p.setLevel(1);
+        p.setArmor(p.getArmor() + 2);
+        p.setDamage(p.getDamage() + 2);
+        p.setHealth(p.getHealth() + 5);
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;
+    default:
+        &Player::getLevel;
+        break;
+    }
+}
+
 enum Room
 {
    Monster,
@@ -106,10 +137,10 @@ void MainMenu()
 int main() // Fonction principale
 {
     int r = rand() % 3;
-
+    
     //Personnage p1;
     Player pl1; // Player
-    Ennemi mob; // Mob
+    Ennemi mob; //Ennemi
 
     std::string name = ""; // Nom du joueur
     int turn = 1; // Tour de jeu
@@ -130,6 +161,7 @@ int main() // Fonction principale
         {
             system("cls"); // Efface la console
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
+            
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
             {
@@ -181,59 +213,30 @@ int main() // Fonction principale
                 }
                 turn++; // Tour suivant
                 system("cls"); // Efface la console
-                if (pl1.getXp() >= 35)
-                {
-                    if (pl1.getLevel() >= 2)
-                    {
-                        if (pl1.getXp() >= 80)
-                        {
-                            if (pl1.getLevel() >= 3)
-                            {
-                                if (pl1.getXp() >= 150)
-                                {
-                                    if (pl1.getLevel() >= 4)
-                                    {
-                                        if (pl1.getXp() >= 350)
-                                        {
-                                            if (pl1.getLevel() >= 5)
-                                            {
-                                                pl1.setLevel(1);
-                                                pl1.setArmor(2);
-                                                pl1.setDamage(2);
-                                                pl1.setHealth(5);
-                                                std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            pl1.setLevel(1);
-                                            pl1.setArmor(2);
-                                            pl1.setDamage(2);
-                                            pl1.setHealth(5);
-                                            std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        pl1.setLevel(1);
-                                        pl1.setArmor(2);
-                                        pl1.setDamage(2);
-                                        pl1.setHealth(5);
-                                        std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                pl1.setLevel(1);
-                                pl1.setArmor(2);
-                                pl1.setDamage(2);
-                                pl1.setHealth(5);
-                                std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
-                            }
-                        }
-                    }
-                }
+            }
+            bool levelup2Make = FALSE;
+            bool levelup3Make = FALSE;
+            bool levelup4Make = FALSE;
+            bool levelup5Make = FALSE;
+            if (pl1.getXp() >= 35 && levelup2Make == false)
+            {
+                levelup2Make = true;
+                LevelUp(pl1);
+            }
+            else if (pl1.getXp() >= 80 && levelup2Make == false)
+            {
+                levelup3Make = true;
+                LevelUp(pl1);
+            }
+            if (pl1.getXp() >= 150 && levelup2Make == false)
+            {
+                levelup4Make = true;
+                LevelUp(pl1);
+            }
+            if (pl1.getXp() >= 300 && levelup2Make == false)
+            {
+                levelup5Make = true;
+                LevelUp(pl1);
             }
         }
 
@@ -263,7 +266,7 @@ int main() // Fonction principale
     std::cout << "Game Over" << endl; // Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
-    //std::cout << "XP gain : " << pl1.getXp() << std::endl
+    std::cout << "XP gain : " << pl1.getXp() << std::endl;
     return 0; // Fin du programme
 }
 
