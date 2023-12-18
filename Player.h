@@ -42,18 +42,6 @@ class Player : public Personnage //Classe Player
 			int getNumberOfKill(); //Number of Kill Getter
 			void setNumberOfKill(int Nok); //Number of Kill Setter
 
-			//Fenetre destructeur
-
-
-			//Player(const Player&) = delete;
-			//Player& operator =(const Player&) = delete;
-			//~Player();
-
-
-			//HINSTANCE m_hInstance;
-			//HWND m_hWnd;
-
-			////Actions
-			//bool OpenInventory();
+			
 };
 

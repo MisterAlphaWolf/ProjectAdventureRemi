@@ -11,7 +11,7 @@
 #include "Item.h"
 
 //using namespace std;
-
+#pragma comment(lib, "winmm.lib")
 
 // Fonction de création dynamique par le joueur de son personnage
 Personnage starting() // Creation du personnage
@@ -137,7 +137,8 @@ void MainMenu()
 int main() // Fonction principale
 {
     int r = rand() % 3;
-    
+    PlaySound(TEXT("GameMusic.wav"), NULL, SND_ASYNC);
+
     //Personnage p1;
     Player pl1; // Player
     Ennemi mob; //Ennemi
@@ -176,31 +177,32 @@ int main() // Fonction principale
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
-                    std::cout << "Attack or Defend ?" << endl; // Demande au joueur d'attaquer ou de defendre
+                    std::cout << "Attack/Defend/Potion/Inventory ?" << endl; // Demande au joueur d'attaquer ou de defendre
 
                     string playerchoice; // Choix du joueur
                     cin >> playerchoice; // Le joueur entre son choix
                     if (playerchoice == "attack" || playerchoice == "Attack")  // Si le joueur attaque
                     {
-                        playerattack = true; // Le joueur attaque
+                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
                     }
                     else if (playerchoice == "defend" || playerchoice == "Defend") // Si le joueur defend
                     {
-                        playerdefend = true; // Le joueur defend
+                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
                     }
+                    else if (playerchoice == "potion" || playerchoice == "Potion") // Si le joueur utilise une potion
+                    {
+                        pl1.UseItem();
+                    }
+                    else if (playerchoice == "inventory" || playerchoice == "Inventory") // montre inventaire
+                    {
+                        pl1.ShowInventory();
+                    }
+
                     else // Si le joueur entre autre chose
                     {
                         std::cout << "invalid choice" << endl; // Affiche "invalid choice"
                     }
 
-                    if (playerattack == true) // Si le joueur attaque
-                    {
-                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
-                    }
-                    else if (playerdefend == true) // Si le joueur defend
-                    {
-                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
-                    }
                 }
                 std::cout << "Mob turn" << endl; // Si le mob attaque
                 if (turn % 2 == 0) // Si le tour est pair
@@ -247,7 +249,7 @@ int main() // Fonction principale
             Item I;
             std::cout << "Vous avez trouve un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
-            Sleep(5000); // Attend 5 seconde
+            Sleep(3000); // Attend 3 seconde
             system("cls"); // Efface la console
         }
         else if (r == Empty)
