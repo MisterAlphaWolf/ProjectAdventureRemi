@@ -11,7 +11,7 @@
 #include "Item.h"
 
 //using namespace std;
-
+#pragma comment(lib, "winmm.lib")
 
 // Fonction de création dynamique par le joueur de son personnage
 Personnage starting() // Creation du personnage
@@ -106,6 +106,7 @@ void MainMenu()
 int main() // Fonction principale
 {
     int r = rand() % 3;
+    PlaySound(TEXT("GameMusic.wav"), NULL, SND_ASYNC);
 
     //Personnage p1;
     Player pl1; // Player
@@ -244,7 +245,7 @@ int main() // Fonction principale
             Item I;
             std::cout << "Vous avez trouve un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
-            Sleep(5000); // Attend 5 seconde
+            Sleep(3000); // Attend 3 seconde
             system("cls"); // Efface la console
         }
         else if (r == Empty)
