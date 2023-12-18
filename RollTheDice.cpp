@@ -145,7 +145,7 @@ int main() // Fonction principale
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
-                    std::cout << "Attack/Defend/Potion ?" << endl; // Demande au joueur d'attaquer ou de defendre
+                    std::cout << "Attack/Defend/Potion/Inventory ?" << endl; // Demande au joueur d'attaquer ou de defendre
 
                     string playerchoice; // Choix du joueur
                     cin >> playerchoice; // Le joueur entre son choix
@@ -161,6 +161,11 @@ int main() // Fonction principale
                     {
                         pl1.UseItem();
                     }
+                    else if (playerchoice == "inventory" || playerchoice == "Inventory") // montre inventaire
+                    {
+                        pl1.ShowInventory();
+                    }
+
                     else // Si le joueur entre autre chose
                     {
                         std::cout << "invalid choice" << endl; // Affiche "invalid choice"
