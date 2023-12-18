@@ -119,7 +119,7 @@ Ennemi createEnnemi(Player p, Ennemi m)
         m.setXPGive(40);
     default:
         m.setArmor(1);
-        m.setDamage(2);
+        m.setDamage(1);
         m.setHealth(10);
         m.setXPGive(20);
         break;
