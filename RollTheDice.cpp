@@ -145,31 +145,27 @@ int main() // Fonction principale
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
-                    std::cout << "Attack or Defend ?" << endl; // Demande au joueur d'attaquer ou de defendre
+                    std::cout << "Attack/Defend/Potion ?" << endl; // Demande au joueur d'attaquer ou de defendre
 
                     string playerchoice; // Choix du joueur
                     cin >> playerchoice; // Le joueur entre son choix
                     if (playerchoice == "attack" || playerchoice == "Attack")  // Si le joueur attaque
                     {
-                        playerattack = true; // Le joueur attaque
+                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
                     }
                     else if (playerchoice == "defend" || playerchoice == "Defend") // Si le joueur defend
                     {
-                        playerdefend = true; // Le joueur defend
+                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
+                    }
+                    else if (playerchoice == "potion" || playerchoice == "Potion") // Si le joueur utilise une potion
+                    {
+                        pl1.UseItem();
                     }
                     else // Si le joueur entre autre chose
                     {
                         std::cout << "invalid choice" << endl; // Affiche "invalid choice"
                     }
 
-                    if (playerattack == true) // Si le joueur attaque
-                    {
-                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
-                    }
-                    else if (playerdefend == true) // Si le joueur defend
-                    {
-                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
-                    }
                 }
                 std::cout << "Mob turn" << endl; // Si le mob attaque
                 if (turn % 2 == 0) // Si le tour est pair
