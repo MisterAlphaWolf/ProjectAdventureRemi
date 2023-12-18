@@ -1,11 +1,16 @@
 #include "Ennemi.h"
 
-Ennemi::Ennemi() //Ennemi Constructor
+Ennemi::Ennemi()
 {
-    string n; //Name
-    setHealth(hp); //Set Health to hp
-    setDamage(damage); //Set Damage to damage
-    setArmor(ca); //Set Armor to ca
+    
+}
+
+Ennemi::Ennemi(int h, int d, int c, int XP)
+{
+    setHealth(h);
+    setDamage(d);
+    setArmor(c);
+    setXPGive(XP);
 }
 
 std::string Ennemi::getName() //Name Getter
@@ -16,17 +21,6 @@ std::string Ennemi::getName() //Name Getter
 void Ennemi::setName(std::string n) //Name Setter
 {
     name = "Zombie"; //Name is Zombie
-}
-
-int Ennemi::getZombieLevel() //Zombie Level Getter
-{
-    return 0; //Return Zombie Level
-}
-
-void Ennemi::setZombieLevel(int l) //Zombie Level Setter
-{
-    if (l <= 0) ZombieLevel = 1; //If Level is less or equal than 0, Level is 1
-    else ZombieLevel = ZombieLevel + l; //Else Level is Level + l
 }
 
 int Ennemi::getHealth() //Health Getter

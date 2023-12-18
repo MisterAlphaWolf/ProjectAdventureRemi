@@ -1,6 +1,5 @@
 // RollTheDice.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 
-
 #include <iostream> 
 #include <cstdlib> 
 #include <random>
@@ -84,6 +83,45 @@ Player startingPlayer() // Creation du joueur
 
 }
 
+Ennemi createEnnemi(Player p, Ennemi m) 
+{
+    switch (p.getLevel())
+    {
+    case 1:
+        m.setArmor(1);
+        m.setDamage(4);
+        m.setHealth(10);
+        m.setXPGive(20);
+    case 2:
+        m.setArmor(4);
+        m.setDamage(5);
+        m.setHealth(14);
+        m.setXPGive(25);
+    case 3:
+        m.setArmor(7);
+        m.setDamage(9);
+        m.setHealth(16);
+        m.setXPGive(30);
+    case 4:
+        m.setArmor(11);
+        m.setDamage(12);
+        m.setHealth(20);
+        m.setXPGive(35);
+    case 5:
+        m.setArmor(15);
+        m.setDamage(15);
+        m.setHealth(25);
+        m.setXPGive(40);
+    default:
+        m.setArmor(1);
+        m.setDamage(4);
+        m.setHealth(10);
+        m.setXPGive(20);
+        break;
+    }
+    return m;
+}
+
 void LevelUp(Player p)
 {
     switch (p.getLevel())
@@ -93,24 +131,30 @@ void LevelUp(Player p)
         p.setArmor(p.getArmor() + 2);
         p.setDamage(p.getDamage() + 2);
         p.setHealth(p.getHealth() + 5);
-        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 2:
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;   
+    case 2:
         p.setLevel(1);
         p.setArmor(p.getArmor() + 2);
         p.setDamage(p.getDamage() + 2);
         p.setHealth(p.getHealth() + 5);
-        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 3:
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    
+    case 3:
         p.setLevel(1);
         p.setArmor(p.getArmor() + 2);
         p.setDamage(p.getDamage() + 2);
         p.setHealth(p.getHealth() + 5);
-        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    case 4:
+        std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;    
+    case 4:
         p.setLevel(1);
         p.setArmor(p.getArmor() + 2);
         p.setDamage(p.getDamage() + 2);
         p.setHealth(p.getHealth() + 5);
         std::cout << "Level up to level " << p.getLevel() << " Congratulation !" << std::endl << "Your armor " << p.getArmor() << " + 2" << std::endl << "Your damage " << p.getDamage() << " + 2" << std::endl << "Your health " << p.getHealth() << " + 2" << std::endl;
     default:
-        &Player::getLevel;
+        p.setLevel(0);
+        p.setArmor(p.getArmor());
+        p.setDamage(p.getDamage());
+        p.setHealth(p.getHealth());
         break;
     }
 }
@@ -162,7 +206,8 @@ int main() // Fonction principale
         {
             system("cls"); // Efface la console
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
-            
+            mob = createEnnemi(pl1, mob);
+
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
             {
