@@ -194,7 +194,6 @@ int main() // Fonction principale
     //Personnage p1;
     Player pl1; // Player
 
-    std::string name = ""; // Nom du joueur
     int turn = 1; // Tour de jeu
 
     //Starting
