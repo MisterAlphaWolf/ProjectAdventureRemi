@@ -108,25 +108,22 @@ int main() // Fonction principale
     mob.setInitiativeValue(1); // Initiative du mob
     mob.setHealth(10); // Vie du mob
     mob.setDamage(4); // Dommage du mob
-    mob.setXPGive(25); // XP donne par le mob
+    //mob.setXPGive(25); // XP donne par le mob
     
     //Boucle de jeu
     while (pl1.getHealth() > 0) // Tant que le joueur est en vie
     {
        std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
 
-        if (r == Monster)
+        if (r == Monster) // Si la salle contient un monstre
         {
             system("cls"); // Efface la console
             mob.setHealth(rand() % 20 + 1); // Vie du mob = random entre 1 et 10
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
+
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
             {
- 
-                bool playerattack = false; // Le joueur n'attaque pas
-                bool playerdefend = false; // Le joueur ne defend pas
-
                 std::cout << "tour : " << turn << std::endl; // Affiche le tour
                 if (pl1.getinitiativeValue() > mob.getInitiativeValue()) // Si le joueur a plus d'initiative que le mob
                 {
@@ -134,56 +131,56 @@ int main() // Fonction principale
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
-                    std::cout << "Attack or Defend ?" << endl; // Demande au joueur d'attaquer ou de defendre
+                    std::cout << "1: Attack  2: Defend 3: Inventory " << endl; // Demande au joueur d'attaquer ou de defendre
 
                     string playerchoice; // Choix du joueur
                     cin >> playerchoice; // Le joueur entre son choix
-                    if (playerchoice == "attack" || playerchoice == "Attack")  // Si le joueur attaque
+                    if (playerchoice == "attack" || playerchoice == "Attack" || playerchoice == "1")  // Si le joueur attaque
                     {
-                        playerattack = true; // Le joueur attaque
+                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
                     }
-                    else if (playerchoice == "defend" || playerchoice == "Defend") // Si le joueur defend
+                    else if (playerchoice == "defend" || playerchoice == "Defend" || playerchoice == "2") // Si le joueur defend
                     {
-                        playerdefend = true; // Le joueur defend
+                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
                     }
+                    else if (playerchoice == "inventory" || playerchoice == "Inventory" || playerchoice == "3") // Si le joueur ouvre son inventaire
+                    {
+                        string itemchoice = " "; // Choix de l'item
+						pl1.ShowInventory(); // Affiche l'inventaire du joueur
+                        std::cout << "Choisir un item" << endl; // Demande au joueur de choisir un item
+                        cin >> itemchoice; // Le joueur entre son choix
+                        pl1.UseItem(itemchoice); // Utilise l'item
+                        std::cout << "  " << endl;
+					}
                     else // Si le joueur entre autre chose
                     {
                         std::cout << "invalid choice" << endl; // Affiche "invalid choice"
                     }
-
-                    if (playerattack == true) // Si le joueur attaque
+                }
+                    std::cout << "Mob turn" << endl; // Si le mob attaque
+                    if (turn % 2 == 0) // Si le tour est pair
                     {
-                        mob.setHealth(mob.getHealth() - (pl1.getDamage() - mob.getArmor())); // Mob HP = Mob HP - (Player Damage - Mob Armor)
+                        pl1.setHealth(pl1.getHealth() - (mob.getDamage() - pl1.getArmor())); // Player HP = Player HP - (Mob Damage - Player Armor)
                     }
-                    else if (playerdefend == true) // Si le joueur defend
+                    else // Si le tour est impair
                     {
-                        pl1.setHealth(pl1.getHealth() - ((pl1.getArmor() + 2) - mob.getDamage())); // Player HP = Player HP - ((Player Armor + 2) - Mob Damage)
+                        pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
                     }
-                }
-                std::cout << "Mob turn" << endl; // Si le mob attaque
-                if (turn % 2 == 0) // Si le tour est pair
-                {
-                    pl1.setHealth(pl1.getHealth() - (mob.getDamage() - pl1.getArmor())); // Player HP = Player HP - (Mob Damage - Player Armor)
-                }
-                else // Si le tour est impair
-                {
-                    pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
-                }
-                turn++; // Tour suivant
-                system("cls"); // Efface la console
+                    turn++; // Tour suivant
+                    system("cls"); // Efface la console
             }
         }
-        else if (r == RItem)
+        else if (r == RItem) // Si la salle contient un item
         {
             std::cout << "Vous entrez dans une salle avec un item" << std::endl; // Affiche "Vous entrez dans une salle avec un item"
 			// Créer un item
             Item I;
-            std::cout << "Vous avez trouve un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
+            std::cout << "Vous avez trouver un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
-            Sleep(5000); // Attend 5 seconde
+            Sleep(1000); // Attend 1 seconde
             system("cls"); // Efface la console
 		}
-        else if (r == Empty)
+        else if (r == Empty) // Si la salle est vide
         {
             std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
             Sleep(800); // Attend 0.8 secondes
@@ -194,7 +191,7 @@ int main() // Fonction principale
 			std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
 		}
 
-        r = rand() % 3;
+        r = rand() % 3; // Random entre 0 et 2
     }
     std::cout << "Game Over" << endl; // Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1

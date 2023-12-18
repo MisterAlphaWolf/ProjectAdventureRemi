@@ -1,6 +1,6 @@
 #include "Weapon.h" // Include Weapon header file
 
-Weapon::Weapon() // Constructeur par défaut
+/*Weapon::Weapon() // Constructeur par défaut
 {
     srand(time(0)); // Génère un nombre aléatoire
     durability = (rand() % 10) + 1; // Durabilité entre 1 et 10
@@ -8,20 +8,21 @@ Weapon::Weapon() // Constructeur par défaut
     damage = 3; // Dégâts par défaut
     setIsOneHanded(true); // Arme à une main par défaut
     
-}
+}*/
 
-Weapon::Weapon(WeaponType wt, int da, int du) // Constructeur Sword avec paramètres
+Weapon::Weapon(int da) // Constructeur Sword avec paramètres
 {
     damage = da; // Dégâts
-    durability = du; // Durabilité
+    srand(time(0)); // Génère un nombre aléatoire
+    durability = (rand() % 10) + 1; // Durabilité entre 1 et 10
 
-    switch (wt) // Switch pour le type d'arme
+    switch (rand()%2) // Switch pour définir le nom de l'arme et si elle est à une main ou non (0 = épée, 1 = épée longue) en random
     {
-        case Sword: // Si c'est une épée
+        case 0: // Si c'est une épée
 			setName("Sword"); // Définit le nom
             setIsOneHanded(true); // Définit si l'arme est à une main
 			break;
-        case Longsword: // Si c'est une épée longue
+        case 1: // Si c'est une épée longue
             setName("Longsword"); // Définit le nom
             setIsOneHanded(false); // Définit si l'arme est à une main
             break;
@@ -32,6 +33,15 @@ Weapon::Weapon(WeaponType wt, int da, int du) // Constructeur Sword avec paramèt
 
     }
 }
+std::string Item::getName() // Getter
+{
+    return name; // Retourne le nom
+}
+void Item::setName(std::string n) // Setter
+{
+    name = n; // Définit le nom
+}
+
 
 
 int Weapon::getDamage() // Getter
@@ -40,7 +50,15 @@ int Weapon::getDamage() // Getter
 }
 void Weapon::setDamage(int d) // Setter
 {
-   damage = d; // Définit les dégâts
+    //si c'est une épée longue
+    if (getIsOneHanded() == false)
+    {
+		damage = d + 2; // Définit les dégâts
+	}
+    else
+    {
+		damage = d; // Définit les dégâts
+	}   
 }
 
 int Weapon::getDurability() // Getter
@@ -56,7 +74,6 @@ int Weapon::getIsOneHanded() // Getter
 {
     return isOneHanded; // Retourne si l'arme est à une main
 }
-
 void Weapon::setIsOneHanded(bool isOneHanded) // Setter
 {
     	isOneHanded = isOneHanded; // Définit si l'arme est à une main

@@ -42,7 +42,7 @@ public: // Attributs publics
 
 	void ShowInventory(); // Fonction pour afficher l'inventaire
 
-	void UseItem(); // Fonction pour utiliser un item
+	void UseItem(string itemname); // Fonction pour utiliser un item
 
 	std::string getName(); // Fonction pour obtenir le nom du personnage
 	void setName(std::string n); // Fonction pour définir le nom du personnage

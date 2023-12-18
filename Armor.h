@@ -25,6 +25,6 @@ public: // Public functions
     void setDurability(int du); // Setter for durability
 
     Armor(); // Default constructor for Armor
-    Armor(ArmorType at,int d, int du); // Constructor for Armor
+    Armor(int d, int du); // Constructor for Armor
 };
 

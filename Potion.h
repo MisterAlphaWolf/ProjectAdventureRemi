@@ -27,7 +27,7 @@ public: // Public functions
     void setArmor(int a); // Setter for armor
 
     Potion(); // Default constructor for Potion
-    Potion(PotionType pt, int value); // Constructor for Potion
+    Potion(int hp, int d, int a); // Constructor for Potion
 
 };
 

@@ -2,15 +2,16 @@
 
 Player::Player() //Player Constructor
 {
-	setXp(0); //Set XP to 0
-	setLevel(0); //Set Level to 0
+	setName("Default"); //Set Name to Default
+	//setXp(0); //Set XP to 0
+	//setLevel(0); //Set Level to 0
 }
 
-Player::Player(int x, int l) //Player Constructor with XP and Level definition
+/*Player::Player(int x, int l) //Player Constructor with XP and Level definition
 {
 	setXp(x); //Set XP to x
 	setLevel(l); //Set Level to l
-}
+*/
 
 Player::Player(std::string n, int h, int d, int a, int x, int l) //Player Constructor with name, health, attack, defence, armure, xp and level definition
 {
@@ -18,8 +19,8 @@ Player::Player(std::string n, int h, int d, int a, int x, int l) //Player Constr
 	setHealth(h); //Set Health to h
 	setDamage(d); //Set Damage to d
 	setArmor(a); //Set Armor to a
-	setXp(x); //Set XP to x
-	setLevel(l); //Set Level to l
+	//setXp(x); //Set XP to x
+	//setLevel(l); //Set Level to l
 }
 
 /*int Player::getXp() //XP Getter
