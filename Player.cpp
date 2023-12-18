@@ -19,7 +19,7 @@ Player::Player(std::string n, int h, int d, int a, int x, int l) //Player Constr
 	setHealth(h); //Set Health to h
 	setDamage(d); //Set Damage to d
 	setArmor(a); //Set Armor to a
-	//setXp(x); //Set XP to x
+	//setXp(x); //Set XP t'o x
 	//setLevel(l); //Set Level to l
 }
 

@@ -18,7 +18,7 @@ class Player : public Personnage //Classe Player
 		private: //Attributs privés
 
 			int XP = 0; //XP
-			int Level = 0; //Level
+			int Level = 1; //Level
 			int NumberOfKill = 0; //Number of Kill
 			
 

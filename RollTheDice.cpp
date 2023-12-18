@@ -94,7 +94,7 @@ Ennemi createEnnemi(Player p, Ennemi m)
     {
     case 1:
         m.setArmor(1);
-        m.setDamage(4);
+        m.setDamage(1);
         m.setHealth(10);
         m.setXPGive(20);
     case 2:
@@ -119,7 +119,7 @@ Ennemi createEnnemi(Player p, Ennemi m)
         m.setXPGive(40);
     default:
         m.setArmor(1);
-        m.setDamage(4);
+        m.setDamage(2);
         m.setHealth(10);
         m.setXPGive(20);
         break;
@@ -225,6 +225,7 @@ int main() // Fonction principale
                 {
                     std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
                     std::cout << "Mob HP : " << mob.getHealth() << endl; // Affiche la vie du mob
+                    std::cout << "Mob atk : " << mob.getDamage() << endl;
                     std::cout << "  " << endl;
                     std::cout << "Player turn" << endl;  // Si c'est le tour du joueur
                     std::cout << "1: Attack  2: Defend 3: Inventory " << endl; // Demande au joueur d'attaquer ou de defendre
@@ -260,7 +261,7 @@ int main() // Fonction principale
                     }
                     else // Si le tour est impair
                     {
-                        pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 2) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 2) - Player Armor)
+                        pl1.setHealth(pl1.getHealth() - ((mob.getDamage() + 1) - pl1.getArmor())); // Player HP = Player HP - ((Mob Damage + 1) - Player Armor)
                     }
                     turn++; // Tour suivant
                     system("cls"); // Efface la console

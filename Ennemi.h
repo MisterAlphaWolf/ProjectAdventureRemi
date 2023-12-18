@@ -14,7 +14,7 @@ private: // Attributs privés
 	//Attribute (variables)
 	std::string name = "Default"; // Nom du personnage
 	int hp = 10; // Points de vie
-	int damage = 4; // Dégâts
+	int damage = 1; // Dégâts
 	int ca = 1; // Armure
 	int initiative = 1; // Initiative
 	int XPGive = 20; // XP donné
