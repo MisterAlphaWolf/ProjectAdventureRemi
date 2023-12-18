@@ -265,7 +265,14 @@ int main() // Fonction principale
 
             r = rand() % 3;
     }
-    std::cout << "Game Over" << endl; // Affiche "Game Over"
+    std::cout << "  /$$$$$$                                           /$$$$$$                               " << std::endl;
+    std::cout << " /$$__  $$                                         /$$__  $$                              " << std::endl;
+    std::cout << "| $$  \__/  /$$$$$$  /$$$$$$/$$$$   /$$$$$$       | $$  \ $$ /$$    /$$ /$$$$$$   /$$$$$$ " << std::endl;
+    std::cout << "| $$ /$$$$ |____  $$| $$_  $$_  $$ /$$__  $$      | $$  | $$|  $$  /$$//$$__  $$ /$$__  $$" << std::endl;
+    std::cout << "| $$|_  $$  /$$$$$$$| $$ \ $$ \ $$| $$$$$$$$      | $$  | $$ \  $$/$$/| $$$$$$$$| $$  \__/" << std::endl;
+    std::cout << "| $$  \ $$ /$$__  $$| $$ | $$ | $$| $$_____/      | $$  | $$  \  $$$/ | $$_____/| $$      " << std::endl;
+    std::cout << "|  $$$$$$/|  $$$$$$$| $$ | $$ | $$|  $$$$$$$      |  $$$$$$/   \  $/  |  $$$$$$$| $$      " << std::endl;
+    std::cout << " \______/  \_______/|__/ |__/ |__/ \_______/       \______/     \_/    \_______/|__/      " << std::endl << std::endl;// Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
     std::cout << "XP gain : " << pl1.getXp() << std::endl;
