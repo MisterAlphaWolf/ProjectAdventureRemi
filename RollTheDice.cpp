@@ -269,16 +269,22 @@ int main() // Fonction principale
 
         r = rand() % 3; // Random entre 0 et 2
     }
-    system("Color 04");
+    system("Color 0F");
     SetConsoleOutputCP(65001);
-    std::cout << "  _|_|_|                                            _|_|                                    " << std::endl;
-    std::cout << " _|          _|_|_|  _|_|_|  _|_|      _|_|        _|    _|  _|      _|    _|_|    _|  _|_|  " << std::endl;
-    std::cout << " _|  _|_|  _|    _|  _|    _|    _|  _|_|_|_|      _|    _|  _|      _|  _|_|_|_|  _|_|      " << std::endl;
-    std::cout << " _|    _|  _|    _|  _|    _|    _|  _|            _|    _|    _|  _|    _|        _|        " << std::endl;
-    std::cout << "   _|_|_|    _|_|_|  _|    _|    _|    _|_|_|        _|_|        _|        _|_|_|  _|        " << std::endl << std::endl;// Affiche "Game Over"
+    std::cout << "     ,o888888o.          .8.                   ,8.       ,8.          8 8888888888                 ,o888888o.  `8.`888b           ,8' 8 8888888888   8 888888888o.   " << std::endl;
+    std::cout << "    8888     `88.       .888.                 ,888.     ,888.         8 8888                    . 8888     `88. `8.`888b         ,8'  8 8888         8 8888    `88.  " << std::endl;
+    std::cout << " ,8 8888       `8.     :88888.               .`8888.   .`8888.        8 8888                   ,8 8888       `8b `8.`888b       ,8'   8 8888         8 8888     `88  " << std::endl;
+    std::cout << " 88 8888              . `88888.             ,8.`8888. ,8.`8888.       8 8888                   88 8888        `8b `8.`888b     ,8'    8 8888         8 8888     ,88  " << std::endl;
+    std::cout << " 88 8888             .8. `88888.           ,8'8.`8888,8^8.`8888.      8 888888888888           88 8888         88  `8.`888b   ,8'     8 888888888888 8 8888.   ,88'  " << std::endl;
+    std::cout << " 88 8888            .8`8. `88888.         ,8' `8.`8888' `8.`8888.     8 8888                   88 8888         88   `8.`888b ,8'      8 8888         8 888888888P'   " << std::endl;
+    std::cout << " 88 8888   8888888 .8' `8. `88888.       ,8'   `8.`88'   `8.`8888.    8 8888                   88 8888        ,8P    `8.`888b8'       8 8888         8 8888`8b       " << std::endl;
+    std::cout << " `8 8888       .8'.8'   `8. `88888.     ,8'     `8.`'     `8.`8888.   8 8888                   `8 8888       ,8P      `8.`888'        8 8888         8 8888 `8b.     " << std::endl;
+    std::cout << "    8888     ,88'.888888888. `88888.   ,8'       `8        `8.`8888.  8 8888                    ` 8888     ,88'        `8.`8'         8 8888         8 8888   `8b.   " << std::endl;
+    std::cout << "     `8888888P' .8'       `8. `88888. ,8'         `         `8.`8888. 8 888888888888               `8888888P'           `8.`          8 888888888888 8 8888     `88. " << std::endl << std::endl;// Affiche "Game Over"
+    
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
     std::cout << "Number of kill : " << pl1.getNumberOfKill() << std::endl; //Le nombre de kill
-    std::cout << "XP gain : " << pl1.getXp() << std::endl;
+    std::cout << "XP gain : " << pl1.getXp() << std::endl; // L'xp gagne
     return 0; // Fin du programme
 }
 
