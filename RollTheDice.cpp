@@ -104,7 +104,7 @@ void MainMenu()
 }
 
 int main() // Fonction principale
-{ 
+{
     int r = rand() % 3;
 
     //Personnage p1;
@@ -120,11 +120,11 @@ int main() // Fonction principale
     //p1 = starting(); // Creation de la classe personnage ( classe parent )
     pl1 = startingPlayer(); // Creation du joueur ( classe enfant )
     pl1.setInitiativeValue(20); // Initiative du joueur
-    
+
     //Boucle de jeu
     while (pl1.getHealth() > 0) // Tant que le joueur est en vie
     {
-       std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
+        std::cout << "Player HP : " << pl1.getHealth() << endl; // Affiche la vie du joueur
 
         if (r == Monster)
         {
@@ -133,7 +133,7 @@ int main() // Fonction principale
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
             {
- 
+
                 bool playerattack = false; // Le joueur n'attaque pas
                 bool playerdefend = false; // Le joueur ne defend pas
 
@@ -181,78 +181,84 @@ int main() // Fonction principale
                 }
                 turn++; // Tour suivant
                 system("cls"); // Efface la console
-            }
-            if (pl1.getXp() >= 35) 
-            {
-                if (pl1.getLevel() >= 2) 
+                if (pl1.getXp() >= 35)
                 {
-                    if (pl1.getXp()>= 80)
+                    if (pl1.getLevel() >= 2)
                     {
-                        if (pl1.getLevel() >= 3)
+                        if (pl1.getXp() >= 80)
                         {
-                            if (pl1.getXp() >= 150)
+                            if (pl1.getLevel() >= 3)
                             {
-                                if (pl1.getLevel() >= 4)
+                                if (pl1.getXp() >= 150)
                                 {
-                                    if (pl1.getXp() >= 350)
+                                    if (pl1.getLevel() >= 4)
                                     {
-                                        if (pl1.getLevel() >= 5)
+                                        if (pl1.getXp() >= 350)
+                                        {
+                                            if (pl1.getLevel() >= 5)
+                                            {
+                                                pl1.setLevel(1);
+                                                pl1.setArmor(2);
+                                                pl1.setDamage(2);
+                                                pl1.setHealth(5);
+                                                std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
+                                            }
+                                        }
+                                        else
                                         {
                                             pl1.setLevel(1);
-                                            pl1.setArmor(5);
-                                            pl1.setDamage(5);
+                                            pl1.setArmor(2);
+                                            pl1.setDamage(2);
                                             pl1.setHealth(5);
                                             std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
                                         }
+                                    }
+                                    else
+                                    {
+                                        pl1.setLevel(1);
+                                        pl1.setArmor(2);
+                                        pl1.setDamage(2);
+                                        pl1.setHealth(5);
+                                        std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
+                                    }
                                 }
-                                else
-                                {
-                                    pl1.setLevel(1);
-                                    pl1.setArmor(5);
-                                    pl1.setDamage(5);
-                                    pl1.setHealth(5);
-                                }
-                        }
-                        else
-                        {
-                            pl1.setLevel(1);
-                            pl1.setArmor(5);
-                            pl1.setDamage(5);
-                            pl1.setHealth(5);
+                            }
+                            else
+                            {
+                                pl1.setLevel(1);
+                                pl1.setArmor(2);
+                                pl1.setDamage(2);
+                                pl1.setHealth(5);
+                                std::cout << "Level up to level " << pl1.getLevel() << std::endl << "Your armor " << pl1.getArmor() << std::endl << "Your damage " << pl1.getDamage() << std::endl << "Your health " << pl1.getHealth() << std::endl;
+                            }
                         }
                     }
                 }
-                else
-                {
-                    pl1.setLevel(1);
-                    pl1.setArmor(5);
-                    pl1.setDamage(5);
-                    pl1.setHealth(5);
-                }
             }
         }
+
         else if (r == RItem)
         {
             std::cout << "Vous entrez dans une salle avec un item" << std::endl; // Affiche "Vous entrez dans une salle avec un item"
-			// Créer un item
+            // Créer un item
             Item I;
             std::cout << "Vous avez trouve un " << I.getName() << std::endl; // Affiche "Vous avez trouve un " + nom de l'item
             pl1.AddInventory(I); // Ajoute l'item dans l'inventaire du joueur
             Sleep(5000); // Attend 5 seconde
             system("cls"); // Efface la console
-		}
+        }
         else if (r == Empty)
         {
-            std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
-            Sleep(800); // Attend 0.8 secondes
-            system("cls"); // Efface la console
-		}
+             std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
+             Sleep(800); // Attend 0.8 secondes
+             system("cls"); // Efface la console
+        }
         else
         {
-			std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
-		}
+            std::cout << "Vous entrez dans une salle vide" << std::endl; // Affiche "Vous entrez dans une salle vide"
+        }
 
-        r = rand() % 3;
+            r = rand() % 3;
     }
     std::cout << "Game Over" << endl; // Affiche "Game Over"
     pl1.setNumberOfKill(1); // Nombre de kill du joueur + 1
