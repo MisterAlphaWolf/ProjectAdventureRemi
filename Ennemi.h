@@ -16,8 +16,8 @@ private: // Attributs privés
 	int hp = 10; // Points de vie
 	int damage = 20; // Dégâts
 	int ca; // Armure
-	int initiative = 1; // Initiative
-	int XPGive = 25; // XP donné
+	int initiative; // Initiative
+	int XPGive = 1; // XP donné
 	int ZombieLevel; // Niveau du zombie
 
 public: // Attributs publics

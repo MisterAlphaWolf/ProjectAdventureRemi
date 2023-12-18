@@ -79,6 +79,5 @@ int Ennemi::getZombieLevel() //Zombie Level Getter
 
 void Ennemi::setZombieLevel(int l) //Zombie Level Setter
 {
-   
+    l = 5; //Zombie Level is 5
 }
-
