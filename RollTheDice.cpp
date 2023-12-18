@@ -54,7 +54,12 @@ Player startingPlayer() // Creation du joueur
     int tempdamage = 0; // Valeur d'attaque temporaire
     int pointcreation = 10; // Point de creation
 
-    std::cout << "--- Creation Player ---" << std::endl << std::endl; // Creation du joueur
+    std::cout << " .o88b. d8888b. d88888b  .d8b.  d888888b d888888b  .d88b.  d8b   db      d8888b. d88888b d8888b. .d8888.  .d88b.  d8b   db d8b   db  .d8b.   d888b  d88888b " << std::endl; // Creation du joueur
+    std::cout << "d8P  Y8 88  `8D 88'     d8' `8b `~~88~~'   `88'   .8P  Y8. 888o  88      88  `8D 88'     88  `8D 88'  YP .8P  Y8. 888o  88 888o  88 d8' `8b 88' Y8b 88'     " << std::endl;
+    std::cout << "8P      88oobY' 88ooooo 88ooo88    88       88    88    88 88V8o 88      88oodD' 88ooooo 88oobY' `8bo.   88    88 88V8o 88 88V8o 88 88ooo88 88      88ooooo " << std::endl;
+    std::cout << "8b      88`8b   88~~~~~ 88~~~88    88       88    88    88 88 V8o88      88~~~   88~~~~~ 88`8b     `Y8b. 88    88 88 V8o88 88 V8o88 88~~~88 88  ooo 88~~~~~ " << std::endl;
+    std::cout << "Y8b  d8 88 `88. 88.     88   88    88      .88.   `8b  d8' 88  V888      88      88.     88 `88. db   8D `8b  d8' 88  V888 88  V888 88   88 88. ~8~ 88.     " << std::endl;
+    std::cout << " `Y88P' 88   YD Y88888P YP   YP    YP    Y888888P  `Y88P'  VP   V8P      88      Y88888P 88   YD `8888Y'  `Y88P'  VP   V8P VP   V8P YP   YP  Y888P  Y88888P " << std::endl << std::endl;
     std::cout << "Entrez le nom de votre personnage : "; // Demande le nom
     std::cin >> tempname; // Le joueur entre son nom
     std::cout << std::endl; // Saut de ligne
