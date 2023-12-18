@@ -102,13 +102,6 @@ int main() // Fonction principale
     //p1 = starting(); // Creation de la classe personnage ( classe parent )
     pl1 = startingPlayer(); // Creation du joueur ( classe enfant )
     pl1.setInitiativeValue(20); // Initiative du joueur
-
-    //Set Mob
-    mob.setName("Zombie"); // Nom du mob
-    mob.setInitiativeValue(1); // Initiative du mob
-    mob.setHealth(10); // Vie du mob
-    mob.setDamage(4); // Dommage du mob
-    mob.setXPGive(25); // XP donne par le mob
     
     //Boucle de jeu
     while (pl1.getHealth() > 0) // Tant que le joueur est en vie
@@ -118,7 +111,6 @@ int main() // Fonction principale
         if (r == Monster)
         {
             system("cls"); // Efface la console
-            mob.setHealth(rand() % 20 + 1); // Vie du mob = random entre 1 et 10
             std::cout << "Vous entrez dans une salle avec un monstre" << std::endl; // Affiche "Vous entrez dans une salle avec un monstre"
             //Boucle de Fight
             while (pl1.getHealth() > 0 && mob.getHealth() > 0) // Tant que le joueur et le mob sont en vie
@@ -172,6 +164,7 @@ int main() // Fonction principale
                 turn++; // Tour suivant
                 system("cls"); // Efface la console
             }
+            
         }
         else if (r == RItem)
         {

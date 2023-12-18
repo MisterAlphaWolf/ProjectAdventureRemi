@@ -13,12 +13,12 @@ private: // Attributs privés
 
 	//Attribute (variables)
 	std::string name; // Nom du personnage
-	int hp; // Points de vie
-	int damage; // Dégâts
+	int hp = 10; // Points de vie
+	int damage = 20; // Dégâts
 	int ca; // Armure
-	int initiative; // Initiative
-	//int XPGive = 1; // XP donné
-	//int ZombieLevel; // Niveau du zombie
+	int initiative = 1; // Initiative
+	int XPGive = 25; // XP donné
+	int ZombieLevel; // Niveau du zombie
 
 public: // Attributs publics
 
@@ -43,10 +43,9 @@ public: // Attributs publics
 	int getInitiativeValue(); //Initiative Getter
 	void setInitiativeValue(int i); //Initiative Setter
 
-	/*int getXPGive(); //XP Getter
+	int getXPGive(); //XP Getter
 	void setXPGive(int xp); //XP Setter
 
 	int getZombieLevel(); //Zombie Level Getter
 	void setZombieLevel(int l); //Zombie Level Setter
-	*/
 };

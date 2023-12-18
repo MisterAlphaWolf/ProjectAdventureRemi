@@ -61,7 +61,7 @@ void Ennemi::setInitiativeValue(int i) //Initiative Setter
     initiative = i; //Initiative is i
 }
 
-/*int Ennemi::getXPGive() //XP Getter
+int Ennemi::getXPGive() //XP Getter
 {
     return XPGive; //Return XP
 }
@@ -79,6 +79,6 @@ int Ennemi::getZombieLevel() //Zombie Level Getter
 
 void Ennemi::setZombieLevel(int l) //Zombie Level Setter
 {
-    l = 5; //Zombie Level is 5
-}*/
+   
+}
 
